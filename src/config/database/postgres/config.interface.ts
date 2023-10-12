@@ -1,7 +1,9 @@
-interface DatabaseConfig {
+export interface Config {
   host: string;
   database: string;
   user: string;
   password: string;
-  endPointId: string;
+  port: number;
+  ssl: string;
+  endpointId: string;
 }

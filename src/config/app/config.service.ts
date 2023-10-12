@@ -9,12 +9,15 @@ export class AppConfigService {
   get name(): string {
     return this.configService.get<Config>('app').name;
   }
+
   get env(): string {
     return this.configService.get<Config>('app').env;
   }
+
   get url(): string {
     return this.configService.get<Config>('app').url;
   }
+
   get port(): number {
     return this.configService.get<Config>('app').port;
   }
