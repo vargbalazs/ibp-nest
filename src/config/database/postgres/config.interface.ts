@@ -4,6 +4,6 @@ export interface Config {
   user: string;
   password: string;
   port: number;
-  ssl: string;
+  ssl: boolean;
   endpointId: string;
 }

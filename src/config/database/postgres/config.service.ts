@@ -26,7 +26,7 @@ export class PostgresConfigService {
     return this.configService.get<Config>('postgres').port;
   }
 
-  get ssl(): string {
+  get ssl(): boolean {
     return this.configService.get<Config>('postgres').ssl;
   }
 
