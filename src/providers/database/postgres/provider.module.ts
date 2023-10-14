@@ -5,6 +5,7 @@ import { PostgresConfigService } from 'src/config/database/postgres/config.servi
 import { OrmConfigModule } from 'src/config/orm/config.module';
 import { OrmConfigService } from 'src/config/orm/config.service';
 import { DatabaseType } from 'typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { DatabaseType } from 'typeorm';
         ssl: postgresConfigService.ssl,
         logging: ormConfigService.logging,
         synchronize: ormConfigService.synchronize,
+        namingStrategy: new SnakeNamingStrategy(),
       }),
       inject: [PostgresConfigService, OrmConfigService],
     } as TypeOrmModuleAsyncOptions),
