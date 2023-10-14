@@ -9,13 +9,15 @@ import { DatabaseType } from 'typeorm';
     TypeOrmModule.forRootAsync({
       imports: [PostgresConfigModule],
       useFactory: async (postgresConfigService: PostgresConfigService) => ({
-        type: 'postgres' as DatabaseType,
+        type: postgresConfigService.databaseType as DatabaseType,
         host: postgresConfigService.host,
         port: postgresConfigService.port,
         username: postgresConfigService.user,
         password: postgresConfigService.password,
         database: postgresConfigService.database,
         ssl: postgresConfigService.ssl,
+        logging: postgresConfigService.logging,
+        synchronize: postgresConfigService.synchronize,
       }),
       inject: [PostgresConfigService],
     } as TypeOrmModuleAsyncOptions),
