@@ -33,7 +33,7 @@ export class User implements IUser {
   @CreateDateColumn({ type: 'timestamp' })
   joinDate: Date;
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @Column({ type: 'timestamp' })
   lastLoginDate: Date;
 
   @Column()
