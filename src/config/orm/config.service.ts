@@ -17,4 +17,8 @@ export class OrmConfigService {
   get databaseType(): string {
     return this.configService.get<Config>('orm').databaseType;
   }
+
+  get autoLoadEntities(): boolean {
+    return this.configService.get<Config>('orm').autoLoadEntities;
+  }
 }

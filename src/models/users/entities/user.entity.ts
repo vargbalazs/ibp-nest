@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { IUser } from '../interfaces/user.interface';
 
 @Entity({ name: 'users' })
@@ -6,21 +12,36 @@ export class User implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: () => 'gen_random_uuid()', name: 'user_id' })
+  @Column({ default: () => 'gen_random_uuid()' })
   userId: string;
 
-  @Column({ name: 'first-name' })
+  @Column()
   firstName: string;
 
-  @Column({ name: 'last-name' })
+  @Column()
   lastName: string;
 
+  @Column()
   userName: string;
+
+  @Column()
   userEmail: string;
+
+  @Column()
   password: string;
-  lastLoginDate: Date;
+
+  @CreateDateColumn({ type: 'timestamp' })
   joinDate: Date;
+
+  @UpdateDateColumn({ type: 'timestamp' })
+  lastLoginDate: Date;
+
+  @Column()
   active: boolean;
+
+  @Column()
   notLocked: boolean;
+
+  @Column()
   firstLogin: boolean;
 }
