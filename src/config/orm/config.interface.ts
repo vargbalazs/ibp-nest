@@ -1,5 +1,5 @@
 export interface Config {
-  logging: boolean;
+  logging: string;
   synchronize: boolean;
   databaseType: string;
   autoLoadEntities: boolean;

@@ -6,7 +6,7 @@ import { Config } from './config.interface';
 export class OrmConfigService {
   constructor(private configService: ConfigService) {}
 
-  get logging(): boolean {
+  get logging(): string {
     return this.configService.get<Config>('orm').logging;
   }
 
