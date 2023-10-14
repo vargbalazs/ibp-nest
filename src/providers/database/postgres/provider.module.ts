@@ -26,7 +26,6 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
         synchronize: ormConfigService.synchronize,
         namingStrategy: new SnakeNamingStrategy(),
         autoLoadEntities: ormConfigService.autoLoadEntities,
-        migrations: ['src/database/migrations/*.ts'],
       }),
       inject: [PostgresConfigService, OrmConfigService],
     } as TypeOrmModuleAsyncOptions),
