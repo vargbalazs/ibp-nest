@@ -33,16 +33,4 @@ export class PostgresConfigService {
   get endpoindId(): string {
     return this.configService.get<Config>('postgres').endpointId;
   }
-
-  get logging(): boolean {
-    return this.configService.get<Config>('postgres').logging;
-  }
-
-  get synchronize(): boolean {
-    return this.configService.get<Config>('postgres').synchronize;
-  }
-
-  get databaseType(): string {
-    return this.configService.get<Config>('postgres').databaseType;
-  }
 }
