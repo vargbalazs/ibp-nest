@@ -3,6 +3,14 @@ import { IUser } from '../interfaces/user.interface';
 import { Exclude } from 'class-transformer';
 
 export class UserEntity extends ModelEntity implements IUser {
+  constructor(partial: Partial<UserEntity>) {
+    super();
+    Object.assign(this, partial);
+  }
+
+  @Exclude()
+  id: number;
+
   userId: string;
   firstName: string;
   lastName: string;
