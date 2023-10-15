@@ -3,7 +3,6 @@ import {
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
 } from 'typeorm';
 import { IUser } from '../interfaces/user.interface';
 
@@ -33,15 +32,15 @@ export class User implements IUser {
   @CreateDateColumn({ type: 'timestamp' })
   joinDate: Date;
 
-  @Column({ type: 'timestamp' })
+  @CreateDateColumn({ type: 'timestamp' })
   lastLoginDate: Date;
 
-  @Column()
+  @Column({ default: false })
   active: boolean;
 
-  @Column()
+  @Column({ default: false })
   notLocked: boolean;
 
-  @Column()
+  @Column({ default: true })
   firstLogin: boolean;
 }

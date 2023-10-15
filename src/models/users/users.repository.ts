@@ -1,13 +1,21 @@
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { IUserRepository } from './interfaces/repository.interface';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InjectDataSource } from '@nestjs/typeorm';
 
 export class UserRepository
   extends Repository<User>
   implements IUserRepository
 {
+  constructor(
+    @InjectDataSource()
+    private dataSource: DataSource,
+  ) {
+    super(User, dataSource.createEntityManager());
+  }
+
   async findAll(): Promise<User[]> {
     return this.find();
   }
