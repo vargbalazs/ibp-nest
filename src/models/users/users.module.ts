@@ -10,6 +10,7 @@ import { IUserRepository } from './interfaces/repository.interface';
   imports: [TypeOrmModule.forFeature([User])],
   providers: [
     UserService,
+    { provide: 'ENTITY', useValue: User },
     { provide: IUserRepository, useClass: UserRepository },
   ],
   controllers: [UserController],

@@ -20,8 +20,6 @@ export class UserRepository
   //   super(User, dataSource.createEntityManager());
   // }
 
-  entity: EntityTarget<User> = User;
-
   async findAll(): Promise<User[]> {
     return this.find();
   }
