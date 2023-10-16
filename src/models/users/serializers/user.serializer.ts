@@ -1,10 +1,8 @@
-import { ModelEntity } from 'src/common/constants/serializers/model.serializer';
 import { IUser } from '../interfaces/user.interface';
 import { Exclude } from 'class-transformer';
 
-export class UserEntity extends ModelEntity implements IUser {
+export class UserEntity implements IUser {
   constructor(partial: Partial<UserEntity>) {
-    super();
     Object.assign(this, partial);
   }
 
