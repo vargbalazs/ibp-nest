@@ -1,4 +1,4 @@
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, EntityTarget, Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { IUserRepository } from './interfaces/repository.interface';
@@ -6,17 +6,21 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectDataSource } from '@nestjs/typeorm';
 import generator from 'generate-password-ts';
 import * as bcryptjs from 'bcryptjs';
+import { BaseRepository } from '../base.repository';
 
 export class UserRepository
-  extends Repository<User>
+  // extends Repository<User>
+  extends BaseRepository<User>
   implements IUserRepository
 {
-  constructor(
-    @InjectDataSource()
-    private dataSource: DataSource,
-  ) {
-    super(User, dataSource.createEntityManager());
-  }
+  // constructor(
+  //   @InjectDataSource()
+  //   private dataSource: DataSource,
+  // ) {
+  //   super(User, dataSource.createEntityManager());
+  // }
+
+  entity: EntityTarget<User> = User;
 
   async findAll(): Promise<User[]> {
     return this.find();
