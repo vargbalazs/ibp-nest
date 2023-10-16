@@ -4,6 +4,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { IUserRepository } from './interfaces/repository.interface';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectDataSource } from '@nestjs/typeorm';
+import generator from 'generate-password-ts';
 
 export class UserRepository
   extends Repository<User>
@@ -26,6 +27,11 @@ export class UserRepository
 
   async addEntity(user: CreateUserDto): Promise<User> {
     const newUser = this.create(user);
+    newUser.password = generator.generate({
+      length: 10,
+      numbers: true,
+      symbols: true,
+    });
     return this.save(newUser);
   }
 
