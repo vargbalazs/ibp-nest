@@ -5,6 +5,7 @@ import { IUserRepository } from './interfaces/repository.interface';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectDataSource } from '@nestjs/typeorm';
 import generator from 'generate-password-ts';
+import * as bcryptjs from 'bcryptjs';
 
 export class UserRepository
   extends Repository<User>
@@ -27,11 +28,13 @@ export class UserRepository
 
   async addEntity(user: CreateUserDto): Promise<User> {
     const newUser = this.create(user);
-    newUser.password = generator.generate({
+    const password = generator.generate({
       length: 10,
       numbers: true,
       symbols: true,
     });
+    const hash = await bcryptjs.hash(password, 10);
+    newUser.password = hash;
     return this.save(newUser);
   }
 
