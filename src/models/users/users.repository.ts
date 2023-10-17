@@ -9,7 +9,7 @@ export class UserRepository
   extends TypeOrmRepository<User>
   implements IUserRepository
 {
-  override async addEntity(user: CreateUserDto): Promise<User> {
+  override async createEntity(user: CreateUserDto): Promise<User> {
     const newUser = this.create(user);
     const password = generator.generate({
       length: 10,

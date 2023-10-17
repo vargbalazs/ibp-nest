@@ -30,7 +30,7 @@ export abstract class TypeOrmRepository<
     return this.findOneBy(options);
   }
 
-  async addEntity(entity: DeepPartial<T>): Promise<T> {
+  async createEntity(entity: DeepPartial<T>): Promise<T> {
     const newEntity = this.create(entity);
     return this.save(newEntity);
   }
