@@ -1,9 +1,9 @@
-import { BaseDto } from './base.dto';
+import { DeepPartial } from 'typeorm';
 
 export interface IBaseRepository<T> {
   findAll(): Promise<T[]>;
   findById(id: number): Promise<T | undefined>;
-  addEntity(createDto: BaseDto): Promise<T>;
-  updateEntity(id: number, updateDto: BaseDto): Promise<T | undefined>;
+  addEntity(createDto: DeepPartial<T>): Promise<T>;
+  updateEntity(id: number, updateDto: DeepPartial<T>): Promise<T | undefined>;
   deleteEntity(id: number): Promise<boolean>;
 }
