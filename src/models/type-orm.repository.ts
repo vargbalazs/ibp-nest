@@ -31,6 +31,16 @@ export abstract class TypeOrmRepository<
     return this.findOneBy(options);
   }
 
+  async findByColumn<T, K extends keyof T>(
+    columnName: K,
+    columnValue: number | string,
+  ): Promise<T> {
+    const options: FindOptionsWhere<T> = {
+      columnName: columnValue,
+    } as unknown as FindOptionsWhere<T>;
+    return this.findOneBy(options);
+  }
+
   async createEntity(entity: DeepPartial<T>): Promise<T> {
     const newEntity = this.create(entity);
     return this.save(newEntity);

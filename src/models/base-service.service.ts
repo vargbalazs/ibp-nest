@@ -20,6 +20,13 @@ export abstract class BaseService<T, T2, T3> {
     return this.repository.findById(id);
   }
 
+  async findByColumn(
+    columnName: string,
+    columnValue: number | string,
+  ): Promise<T | undefined> {
+    return this.repository.findByColumn(columnName, columnValue);
+  }
+
   async updateEntity(id: number, updateDto: T3): Promise<T | undefined> {
     return this.repository.updateEntity(id, updateDto);
   }
