@@ -1,4 +1,3 @@
-import { DeepPartial } from 'typeorm';
 import { IBaseRepository } from './base-repository.interface';
 
 /*

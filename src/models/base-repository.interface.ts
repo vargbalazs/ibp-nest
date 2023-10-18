@@ -1,5 +1,3 @@
-import { DeepPartial } from 'typeorm';
-
 /*
 T = database entity (like User class)
 T2 = createDto class

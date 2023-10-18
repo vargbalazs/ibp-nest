@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Param, Post, Put } from '@nestjs/common';
 import { UserService } from './users.service';
 import { UserEntity } from './serializers/user.serializer';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -11,5 +11,12 @@ export class UserController {
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
     return new UserEntity(await this.userService.createEntity(createUserDto));
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    return new UserEntity(
+      await this.userService.updateEntity(id, updateUserDto),
+    );
   }
 }
