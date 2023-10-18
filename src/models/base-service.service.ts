@@ -1,10 +1,15 @@
 import { DeepPartial } from 'typeorm';
 import { IBaseRepository } from './base-repository.interface';
 
-export abstract class BaseService<T> {
-  constructor(private readonly repository: IBaseRepository<T>) {}
+/*
+T = database entity (like User class)
+T2 = createDto class
+T3 = updateDto class
+ */
+export abstract class BaseService<T, T2, T3> {
+  constructor(private readonly repository: IBaseRepository<T, T2, T3>) {}
 
-  async createEntity(createDto: DeepPartial<T>): Promise<T> {
+  async createEntity(createDto: T2): Promise<T> {
     return this.repository.createEntity(createDto);
   }
 
@@ -16,10 +21,7 @@ export abstract class BaseService<T> {
     return this.repository.findById(id);
   }
 
-  async updateEntity(
-    id: number,
-    updateDto: DeepPartial<T>,
-  ): Promise<T | undefined> {
+  async updateEntity(id: number, updateDto: T3): Promise<T | undefined> {
     return this.repository.updateEntity(id, updateDto);
   }
 

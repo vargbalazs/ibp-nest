@@ -1,15 +1,20 @@
-import { Controller, Post, Body, Inject } from '@nestjs/common';
+import { Controller, Post, Body, Inject, Type } from '@nestjs/common';
 import { BaseService } from './base-service.service';
-import { DeepPartial } from 'typeorm';
 
 @Controller()
-export abstract class BaseController<T, T2> {
-  constructor(private readonly service: BaseService<T>) {}
+/*
+T = database entity (like User class)
+T2 = serializer entity (like UserEntity class)
+T3 = createDto class 
+T4 = updateDto class
+ */
+export abstract class BaseController<T, T2, T3, T4> {
+  constructor(private readonly service: BaseService<T, T3, T4>) {}
 
-  @Inject('SERIALIZER') private readonly serializer: any;
+  @Inject('SERIALIZER') private readonly serializer: Type<T2>;
 
   @Post()
-  async create(@Body() createDto: DeepPartial<T>): Promise<T2> {
+  async create(@Body() createDto: T3): Promise<T2> {
     return new this.serializer(await this.service.createEntity(createDto));
   }
 }
