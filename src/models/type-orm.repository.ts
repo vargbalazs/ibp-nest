@@ -1,5 +1,6 @@
 import { Inject } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
+import { ENTITY } from 'src/common/constants/injection-tokens.constant';
 import {
   DataSource,
   DeepPartial,
@@ -14,7 +15,7 @@ export abstract class TypeOrmRepository<
   constructor(
     @InjectDataSource()
     private dataSource: DataSource,
-    @Inject('ENTITY') private readonly entity: EntityTarget<T>,
+    @Inject(ENTITY) private readonly entity: EntityTarget<T>,
   ) {
     super(entity, dataSource.createEntityManager());
   }

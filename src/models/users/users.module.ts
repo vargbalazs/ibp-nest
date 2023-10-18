@@ -6,14 +6,18 @@ import { UserController } from './users.controller';
 import { UserRepository } from './users.repository';
 import { IUserRepository } from './interfaces/repository.interface';
 import { UserEntity } from './serializers/user.serializer';
+import {
+  ENTITY,
+  SERIALIZER,
+} from 'src/common/constants/injection-tokens.constant';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [
     UserService,
-    { provide: 'ENTITY', useValue: User },
+    { provide: ENTITY, useValue: User },
     { provide: IUserRepository, useClass: UserRepository },
-    { provide: 'SERIALIZER', useValue: UserEntity },
+    { provide: SERIALIZER, useValue: UserEntity },
   ],
   controllers: [UserController],
 })
