@@ -31,13 +31,13 @@ export abstract class TypeOrmRepository<
     return this.findOneBy(options);
   }
 
-  async findByColumn<T, K extends keyof T>(
-    columnName: K,
+  async findByColumn(
+    columnName: string,
     columnValue: number | string,
   ): Promise<T> {
     const options: FindOptionsWhere<T> = {
-      columnName: columnValue,
-    } as unknown as FindOptionsWhere<T>;
+      [columnName]: columnValue,
+    } as FindOptionsWhere<T>;
     return this.findOneBy(options);
   }
 
