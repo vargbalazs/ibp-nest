@@ -20,5 +20,6 @@ import {
     { provide: SERIALIZER, useValue: UserEntity },
   ],
   controllers: [UserController],
+  exports: [UserService],
 })
 export class UsersModule {}

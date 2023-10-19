@@ -16,6 +16,7 @@ export class UserRepository
       numbers: true,
       symbols: true,
     });
+    console.log(`password for new user: ${password}`);
     const hash = await bcryptjs.hash(password, 10);
     newUser.password = hash;
     return this.save(newUser);
