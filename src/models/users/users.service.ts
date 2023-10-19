@@ -16,4 +16,12 @@ export class UserService extends BaseService<
   ) {
     super(userRepository);
   }
+
+  async findByUserName(userName: string): Promise<User> {
+    return this.userRepository.findByColumn('userName', userName);
+  }
+
+  async findByUserEmail(userEmail: string): Promise<User> {
+    return this.userRepository.findByColumn('userEmail', userEmail);
+  }
 }
