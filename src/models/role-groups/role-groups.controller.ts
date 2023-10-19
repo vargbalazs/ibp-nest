@@ -16,4 +16,13 @@ import { UpdateRoleGroupDto } from './dto/update-role-group.dto';
 @Controller('role-groups')
 export class RoleGroupController {
   constructor(private readonly roleGroupService: RoleGroupService) {}
+
+  @Post()
+  async create(
+    @Body() createRoleGroupDto: CreateRoleGroupDto,
+  ): Promise<RoleGroupEntity> {
+    return new RoleGroupEntity(
+      await this.roleGroupService.createEntity(createRoleGroupDto),
+    );
+  }
 }
