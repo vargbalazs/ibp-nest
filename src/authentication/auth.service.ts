@@ -9,10 +9,13 @@ export class AuthService {
 
   async login(userEmail: string, password: string): Promise<User> {
     const user = await this.userService.findByUserEmail(userEmail);
-    const authenticated = await bcryptjs.compare(password, user.password);
+    const authenticated = await bcryptjs.compare(
+      password,
+      user ? user.password : '',
+    );
 
-    if (!authenticated) {
-      throw new UnauthorizedException();
+    if (!user || !authenticated) {
+      throw new UnauthorizedException('Wrong user email or password');
     }
 
     return user;
