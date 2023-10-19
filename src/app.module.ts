@@ -3,16 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppConfigModule } from './config/app/config.module';
 import { PostgresProviderModule } from './providers/database/postgres/provider.module';
-import { UsersModule } from './models/users/users.module';
-import { RoleGroupsModule } from './models/role-groups/role-groups.module';
+import { ModelsModule } from './models/models.module';
 
 @Module({
-  imports: [
-    AppConfigModule,
-    PostgresProviderModule,
-    UsersModule,
-    RoleGroupsModule,
-  ],
+  imports: [AppConfigModule, PostgresProviderModule, ModelsModule],
   controllers: [AppController],
   providers: [AppService],
 })
