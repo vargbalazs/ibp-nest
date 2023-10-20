@@ -1,12 +1,9 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { AppConfigService } from './config/app/config.service';
-import {
-  BadRequestException,
-  ClassSerializerInterceptor,
-  ValidationPipe,
-} from '@nestjs/common';
+import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
+import { validationExceptionFactory } from './common/exceptions/validation.exception';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -18,7 +15,7 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
-      exceptionFactory: (errors) => new BadRequestException(errors),
+      exceptionFactory: validationExceptionFactory,
     }),
   );
 
