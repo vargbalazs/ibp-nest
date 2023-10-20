@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import config from './config';
-import { ApiConfigService } from './config.service';
+import { JwtConfigService } from './config.service';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { ApiConfigService } from './config.service';
       load: [config],
     }),
   ],
-  providers: [ApiConfigService],
-  exports: [ApiConfigService],
+  providers: [JwtConfigService],
+  exports: [JwtConfigService],
 })
-export class ApiConfigModule {}
+export class JwtConfigModule {}
