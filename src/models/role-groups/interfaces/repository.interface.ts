@@ -1,9 +1,13 @@
-import { IBaseRepository } from 'src/models/base-repository.interface';
-import { RoleGroup } from '../entities/role-group.entity';
+import { BaseRepository } from 'src/models/base-repository.interface';
+import { RoleGroupModel } from '../entities/role-group.entity';
 import { CreateRoleGroupDto } from '../dto/create-role-group.dto';
 import { UpdateRoleGroupDto } from '../dto/update-role-group.dto';
 
-export interface IRoleGroupRepository
-  extends IBaseRepository<RoleGroup, CreateRoleGroupDto, UpdateRoleGroupDto> {}
+export interface RoleGroupModelRepository
+  extends BaseRepository<
+    RoleGroupModel,
+    CreateRoleGroupDto,
+    UpdateRoleGroupDto
+  > {}
 
-export const IRoleGroupRepository = Symbol('IRoleGroupRepository');
+export const RoleGroupModelRepository = Symbol('RoleGroupModelRepository');

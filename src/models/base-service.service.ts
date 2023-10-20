@@ -1,4 +1,4 @@
-import { IBaseRepository } from './base-repository.interface';
+import { BaseRepository } from './base-repository.interface';
 
 /*
 T = database entity (like User class)
@@ -6,7 +6,7 @@ T2 = createDto class
 T3 = updateDto class
  */
 export abstract class BaseService<T, T2, T3> {
-  constructor(private readonly repository: IBaseRepository<T, T2, T3>) {}
+  constructor(private readonly repository: BaseRepository<T, T2, T3>) {}
 
   async createEntity(createDto: T2): Promise<T> {
     return this.repository.createEntity(createDto);

@@ -1,6 +1,6 @@
-import { IRoleGroup } from '../interfaces/role-group.interface';
+import { RoleGroup } from '../interfaces/role-group.interface';
 
-export class RoleGroupEntity implements IRoleGroup {
+export class RoleGroupEntity implements RoleGroup {
   constructor(partial: Partial<RoleGroupEntity>) {
     Object.assign(this, partial);
   }

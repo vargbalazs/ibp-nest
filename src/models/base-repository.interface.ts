@@ -3,7 +3,7 @@ T = database entity (like User class)
 T2 = createDto class
 T3 = updateDto class
  */
-export interface IBaseRepository<T, T2, T3> {
+export interface BaseRepository<T, T2, T3> {
   findAll(): Promise<T[]>;
   findById(id: number): Promise<T | undefined>;
   findByColumn(

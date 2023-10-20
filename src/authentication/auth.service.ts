@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { User } from 'src/models/users/entities/user.entity';
+import { UserModel } from 'src/models/users/entities/user.entity';
 import { UserService } from 'src/models/users/users.service';
 import * as bcryptjs from 'bcryptjs';
 
@@ -7,7 +7,7 @@ import * as bcryptjs from 'bcryptjs';
 export class AuthService {
   constructor(private userService: UserService) {}
 
-  async login(userEmail: string, password: string): Promise<User> {
+  async login(userEmail: string, password: string): Promise<UserModel> {
     const user = await this.userService.findByUserEmail(userEmail);
     const authenticated = await bcryptjs.compare(
       password,

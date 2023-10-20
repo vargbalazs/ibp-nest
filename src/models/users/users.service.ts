@@ -1,27 +1,28 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { User } from './entities/user.entity';
-import { IUserRepository } from './interfaces/repository.interface';
+import { UserModel } from './entities/user.entity';
+import { UserModelRepository } from './interfaces/repository.interface';
 import { BaseService } from '../base-service.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService extends BaseService<
-  User,
+  UserModel,
   CreateUserDto,
   UpdateUserDto
 > {
   constructor(
-    @Inject(IUserRepository) private readonly userRepository: IUserRepository,
+    @Inject(UserModelRepository)
+    private readonly userRepository: UserModelRepository,
   ) {
     super(userRepository);
   }
 
-  async findByUserName(userName: string): Promise<User> {
+  async findByUserName(userName: string): Promise<UserModel> {
     return this.userRepository.findByColumn('userName', userName);
   }
 
-  async findByUserEmail(userEmail: string): Promise<User> {
+  async findByUserEmail(userEmail: string): Promise<UserModel> {
     return this.userRepository.findByColumn('userEmail', userEmail);
   }
 }

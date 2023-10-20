@@ -4,10 +4,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { IUser } from '../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 
 @Entity({ name: 'users' })
-export class User implements IUser {
+export class UserModel implements User {
   @PrimaryGeneratedColumn()
   id: number;
 

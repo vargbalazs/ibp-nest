@@ -1,7 +1,7 @@
-import { RoleGroup } from './entities/role-group.entity';
-import { IRoleGroupRepository } from './interfaces/repository.interface';
+import { RoleGroupModel } from './entities/role-group.entity';
+import { RoleGroupModelRepository } from './interfaces/repository.interface';
 import { TypeOrmRepository } from '../type-orm.repository';
 
 export class RoleGroupRepository
-  extends TypeOrmRepository<RoleGroup>
-  implements IRoleGroupRepository {}
+  extends TypeOrmRepository<RoleGroupModel>
+  implements RoleGroupModelRepository {}

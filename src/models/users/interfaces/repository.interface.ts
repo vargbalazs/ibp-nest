@@ -1,9 +1,9 @@
-import { IBaseRepository } from 'src/models/base-repository.interface';
-import { User } from '../entities/user.entity';
+import { BaseRepository } from 'src/models/base-repository.interface';
+import { UserModel } from '../entities/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 
-export interface IUserRepository
-  extends IBaseRepository<User, CreateUserDto, UpdateUserDto> {}
+export interface UserModelRepository
+  extends BaseRepository<UserModel, CreateUserDto, UpdateUserDto> {}
 
-export const IUserRepository = Symbol('IUserRepository');
+export const UserModelRepository = Symbol('UserModelRepository');
