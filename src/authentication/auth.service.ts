@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/models/users/users.service';
 import * as bcryptjs from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,7 @@ export class AuthService {
       throw new UnauthorizedException('Wrong user email or password');
     }
 
-    const payload = {
+    const payload: JwtPayload = {
       sub: user.userId,
       username: user.userName,
       useremail: user.userEmail,
