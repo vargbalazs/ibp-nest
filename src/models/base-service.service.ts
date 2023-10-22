@@ -1,4 +1,6 @@
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { BaseRepository } from './base-repository.interface';
+import { FindOptionsWhere, UpdateResult } from 'typeorm';
 
 /*
 T = database entity (like User class)
@@ -33,5 +35,13 @@ export abstract class BaseService<T, T2, T3> {
 
   async deleteEntity(id: number): Promise<boolean> {
     return this.repository.deleteEntity(id);
+  }
+
+  async updatePartial(
+    idColumn: string,
+    idValue: number | string,
+    partialEntity: QueryDeepPartialEntity<T>,
+  ): Promise<UpdateResult> {
+    return this.repository.updatePartial(idColumn, idValue, partialEntity);
   }
 }

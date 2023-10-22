@@ -1,3 +1,6 @@
+import { UpdateResult } from 'typeorm';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+
 /*
 T = database entity (like User class)
 T2 = createDto class
@@ -13,4 +16,9 @@ export interface BaseRepository<T, T2, T3> {
   createEntity(createDto: T2): Promise<T>;
   updateEntity(id: number, updateDto: T3): Promise<T | undefined>;
   deleteEntity(id: number): Promise<boolean>;
+  updatePartial(
+    idColumn: string,
+    idValue: number | string,
+    partialEntity: QueryDeepPartialEntity<T>,
+  ): Promise<UpdateResult>;
 }

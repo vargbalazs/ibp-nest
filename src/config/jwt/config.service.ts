@@ -6,11 +6,19 @@ import { Config } from './config.interface';
 export class JwtConfigService {
   constructor(private configService: ConfigService) {}
 
-  get secret(): string {
-    return this.configService.get<Config>('jwt').secret;
+  get accessSecret(): string {
+    return this.configService.get<Config>('jwt').accessSecret;
   }
 
-  get expiresIn(): string {
-    return this.configService.get<Config>('jwt').expiresIn;
+  get accessExpiresIn(): string {
+    return this.configService.get<Config>('jwt').accessExpiresIn;
+  }
+
+  get refreshSecret(): string {
+    return this.configService.get<Config>('jwt').refreshSecret;
+  }
+
+  get refreshExpiresIn(): string {
+    return this.configService.get<Config>('jwt').refreshExpiresIn;
   }
 }

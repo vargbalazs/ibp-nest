@@ -7,7 +7,9 @@ import {
   EntityTarget,
   FindOptionsWhere,
   Repository,
+  UpdateResult,
 } from 'typeorm';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 export abstract class TypeOrmRepository<
   T extends { id: number },
@@ -60,5 +62,16 @@ export abstract class TypeOrmRepository<
   async deleteEntity(id: number): Promise<boolean> {
     const result = await this.delete(id);
     return result.affected > 0;
+  }
+
+  async updatePartial(
+    idColumn: string,
+    idValue: number | string,
+    partialEntity: QueryDeepPartialEntity<T>,
+  ): Promise<UpdateResult> {
+    const options: FindOptionsWhere<T> = {
+      [idColumn]: idValue,
+    } as FindOptionsWhere<T>;
+    return this.update(options, partialEntity);
   }
 }

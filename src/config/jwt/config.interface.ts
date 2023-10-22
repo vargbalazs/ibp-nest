@@ -1,4 +1,6 @@
 export interface Config {
-  secret: string;
-  expiresIn: string;
+  accessSecret: string;
+  accessExpiresIn: string;
+  refreshSecret: string;
+  refreshExpiresIn: string;
 }

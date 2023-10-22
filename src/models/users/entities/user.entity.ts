@@ -43,4 +43,7 @@ export class UserModel implements User {
 
   @Column({ default: true })
   firstLogin: boolean;
+
+  @Column({ nullable: true })
+  refreshToken: string;
 }

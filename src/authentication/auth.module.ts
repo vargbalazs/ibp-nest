@@ -8,8 +8,9 @@ import { JwtConfigModule } from 'src/config/jwt/config.module';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
-import { JwtStrategy } from './jwt.strategy';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { AccessTokenStrategy } from './strategies/access-token.strategy';
+import { AccessTokenGuard } from './guards/access-token.guard';
+import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
 
 @Module({
   imports: [
@@ -18,8 +19,8 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
       imports: [JwtConfigModule],
       useFactory: async (configService: JwtConfigService) => ({
         global: true,
-        secret: configService.secret,
-        signOptions: { expiresIn: configService.expiresIn },
+        secret: configService.accessSecret,
+        signOptions: { expiresIn: configService.accessExpiresIn },
       }),
       inject: [JwtConfigService],
     }),
@@ -29,8 +30,9 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
   providers: [
     AuthService,
     JwtConfigService,
-    { provide: APP_GUARD, useClass: JwtAuthGuard },
-    JwtStrategy,
+    { provide: APP_GUARD, useClass: AccessTokenGuard },
+    AccessTokenStrategy,
+    RefreshTokenStrategy,
   ],
   controllers: [AuthController],
 })
