@@ -21,6 +21,31 @@ async function bootstrap() {
 
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
   app.useGlobalFilters(new HttpExceptionFilter());
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+      'Origin',
+      'Access-Control-Allow-Origin',
+      'Content-Type',
+      'Accept',
+      'Jwt-Token',
+      'Authorization',
+      'Origin',
+      'Accept',
+      'X-Requested-With',
+      'Access-Control-Request-Method',
+      'Access-Control-Request-Headers',
+    ],
+    exposedHeaders: [
+      'Origin',
+      'Content-Type',
+      'Accept',
+      'Jwt-Token',
+      'Authorization',
+      'Access-Control-Allow-Origin',
+    ],
+  });
 
   await app.listen(appConfig.port);
 }
