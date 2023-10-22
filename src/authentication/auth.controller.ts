@@ -38,6 +38,6 @@ export class AuthController {
 
   @Get('profile')
   getProfile(@Request() req: any) {
-    return req.user; //'user profile';
+    return req.user;
   }
 }

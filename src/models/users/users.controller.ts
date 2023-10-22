@@ -12,17 +12,20 @@ import { UserService } from './users.service';
 import { UserEntity } from './serializers/user.serializer';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Public } from 'src/common/decorators/public.decorator';
 
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Public()
   @Get('username-exists')
   async findByUserName(@Query('user-name') userName: string): Promise<boolean> {
     const user = await this.userService.findByUserName(userName);
     return !!user;
   }
 
+  @Public()
   @Get('useremail-exists')
   async findByUserEmail(
     @Query('user-email') userEmail: string,
@@ -44,6 +47,7 @@ export class UserController {
     );
   }
 
+  @Public()
   @Post()
   async create(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
     return new UserEntity(await this.userService.createEntity(createUserDto));

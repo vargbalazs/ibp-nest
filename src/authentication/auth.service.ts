@@ -1,13 +1,10 @@
-import {
-  ForbiddenException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/models/users/users.service';
 import * as bcryptjs from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { JwtConfigService } from 'src/config/jwt/config.service';
+import * as argon2 from 'argon2';
 
 @Injectable()
 export class AuthService {
@@ -34,12 +31,6 @@ export class AuthService {
       useremail: user.userEmail,
     };
 
-    // const accessToken = await this.jwtService.signAsync(payload);
-    // const refreshToken = await this.jwtService.signAsync(payload, {
-    //   secret: this.jwtConfigService.refreshSecret,
-    //   expiresIn: this.jwtConfigService.refreshExpiresIn,
-    // });
-
     const tokens = await this.getTokens(payload);
 
     await this.updateRefreshToken(user.userId, tokens.refreshToken);
@@ -59,15 +50,17 @@ export class AuthService {
   async refreshTokens(userId: string, refreshToken: string) {
     const user = await this.userService.findByColumn('userId', userId);
 
-    if (!user || !user.refreshToken)
-      throw new ForbiddenException('Access Denied');
+    if (!user || !user.refreshToken) throw new UnauthorizedException();
 
-    const refreshTokenMatches = await bcryptjs.compare(
-      refreshToken,
+    // Per bcrypt implementation, only the first 72 bytes of a string are used.
+    // Any extra bytes are ignored when matching passwords. Note that this is not the first 72 characters.
+    // because of this we use here argon2
+    const refreshTokenMatches = await argon2.verify(
       user.refreshToken,
+      refreshToken,
     );
 
-    if (!refreshTokenMatches) throw new ForbiddenException('Access Denied');
+    if (!refreshTokenMatches) throw new UnauthorizedException();
 
     const payload: JwtPayload = {
       sub: user.userId,
@@ -83,7 +76,10 @@ export class AuthService {
   }
 
   async updateRefreshToken(userId: string, refreshToken: string) {
-    const hashedRefreshToken = await bcryptjs.hash(refreshToken, 10);
+    // Per bcrypt implementation, only the first 72 bytes of a string are used.
+    // Any extra bytes are ignored when matching passwords. Note that this is not the first 72 characters.
+    // because of this we use here argon2
+    const hashedRefreshToken = await argon2.hash(refreshToken);
     await this.userService.updatePartial('userId', userId, {
       refreshToken: hashedRefreshToken,
     });
