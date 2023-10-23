@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 import { User } from '../interfaces/user.interface';
 
-@Entity({ name: 'users' })
+@Entity({ name: 'users', synchronize: false })
 export class UserModel implements User {
   @PrimaryGeneratedColumn()
   id: number;
