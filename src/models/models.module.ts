@@ -4,6 +4,7 @@ import { UsersModule } from './users/users.module';
 import { ActionsModule } from './actions/actions.module';
 import { ModulesModule } from './modules/modules.module';
 import { OperationsModule } from './operations/operations.module';
+import { RolesModule } from './roles/roles.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { OperationsModule } from './operations/operations.module';
     ActionsModule,
     ModulesModule,
     OperationsModule,
+    RolesModule,
   ],
 })
 export class ModelsModule {}
