@@ -1,3 +1,4 @@
+import { SubModuleModel } from 'src/models/sub-modules/entities/sub-module.entity';
 import { Module } from '../interfaces/module.interface';
 
 export class ModuleEntity implements Module {
@@ -7,4 +8,5 @@ export class ModuleEntity implements Module {
 
   id: number;
   name: string;
+  subModules: SubModuleModel[];
 }

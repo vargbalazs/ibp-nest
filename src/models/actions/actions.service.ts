@@ -13,8 +13,8 @@ export class ActionService extends BaseService<
 > {
   constructor(
     @Inject(ActionModelRepository)
-    private readonly ActionRepository: ActionModelRepository,
+    private readonly actionRepository: ActionModelRepository,
   ) {
-    super(ActionRepository);
+    super(actionRepository);
   }
 }

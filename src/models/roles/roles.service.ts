@@ -13,8 +13,8 @@ export class RoleService extends BaseService<
 > {
   constructor(
     @Inject(RoleModelRepository)
-    private readonly RoleRepository: RoleModelRepository,
+    private readonly roleRepository: RoleModelRepository,
   ) {
-    super(RoleRepository);
+    super(roleRepository);
   }
 }

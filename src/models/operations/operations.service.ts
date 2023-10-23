@@ -13,8 +13,8 @@ export class OperationService extends BaseService<
 > {
   constructor(
     @Inject(OperationModelRepository)
-    private readonly OperationRepository: OperationModelRepository,
+    private readonly operationRepository: OperationModelRepository,
   ) {
-    super(OperationRepository);
+    super(operationRepository);
   }
 }

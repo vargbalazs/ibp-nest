@@ -13,8 +13,8 @@ export class ModuleService extends BaseService<
 > {
   constructor(
     @Inject(ModuleModelRepository)
-    private readonly ModuleRepository: ModuleModelRepository,
+    private readonly moduleRepository: ModuleModelRepository,
   ) {
-    super(ModuleRepository);
+    super(moduleRepository);
   }
 }
