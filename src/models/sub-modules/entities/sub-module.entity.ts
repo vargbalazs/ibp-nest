@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { SubModule } from '../interfaces/sub-module.interface';
 import { ModuleModel } from 'src/models/modules/entities/module.entity';
 
-@Entity({ name: 'submodules', synchronize: true })
+@Entity({ name: 'submodules', synchronize: false })
 export class SubModuleModel implements SubModule {
   @PrimaryGeneratedColumn()
   id: number;

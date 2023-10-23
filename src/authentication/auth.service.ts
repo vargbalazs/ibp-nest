@@ -50,7 +50,8 @@ export class AuthService {
   async refreshTokens(userId: string, refreshToken: string) {
     const user = await this.userService.findByColumn('userId', userId);
 
-    if (!user || !user.refreshToken) throw new UnauthorizedException();
+    if (!user || !user.refreshToken)
+      throw new UnauthorizedException('Access denied');
 
     // Per bcrypt implementation, only the first 72 bytes of a string are used.
     // Any extra bytes are ignored when matching passwords. Note that this is not the first 72 characters.
@@ -60,7 +61,8 @@ export class AuthService {
       refreshToken,
     );
 
-    if (!refreshTokenMatches) throw new UnauthorizedException();
+    if (!refreshTokenMatches)
+      throw new UnauthorizedException(`Refresh token doesn't match`);
 
     const payload: JwtPayload = {
       sub: user.userId,
