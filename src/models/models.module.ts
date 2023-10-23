@@ -3,8 +3,15 @@ import { RoleGroupsModule } from './role-groups/role-groups.module';
 import { UsersModule } from './users/users.module';
 import { ActionsModule } from './actions/actions.module';
 import { ModulesModule } from './modules/modules.module';
+import { OperationsModule } from './operations/operations.module';
 
 @Module({
-  imports: [UsersModule, RoleGroupsModule, ActionsModule, ModulesModule],
+  imports: [
+    UsersModule,
+    RoleGroupsModule,
+    ActionsModule,
+    ModulesModule,
+    OperationsModule,
+  ],
 })
 export class ModelsModule {}

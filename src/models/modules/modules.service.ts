@@ -2,8 +2,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ModuleModel } from './entities/module.entity';
 import { ModuleModelRepository } from './interfaces/repository.interface';
 import { BaseService } from '../base-service.service';
-import { CreateModuleDto } from './dto/create-Module.dto';
-import { UpdateModuleDto } from './dto/update-Module.dto';
+import { CreateModuleDto } from './dto/create-module.dto';
+import { UpdateModuleDto } from './dto/update-module.dto';
 
 @Injectable()
 export class ModuleService extends BaseService<
