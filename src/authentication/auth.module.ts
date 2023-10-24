@@ -11,6 +11,7 @@ import { PassportModule } from '@nestjs/passport';
 import { AccessTokenStrategy } from './strategies/access-token.strategy';
 import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
+import { MailModule } from 'src/mail/mail.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
     }),
     ConfigModule,
     PassportModule,
+    MailModule,
   ],
   providers: [
     AuthService,

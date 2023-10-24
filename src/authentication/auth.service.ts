@@ -6,8 +6,8 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { JwtConfigService } from 'src/config/jwt/config.service';
 import * as argon2 from 'argon2';
 import generator from 'generate-password-ts';
-import { UpdateResult } from 'typeorm';
 import { EmailNotExistsException } from 'src/common/exceptions/email-not-exists.exception';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +15,7 @@ export class AuthService {
     private userService: UserService,
     private jwtService: JwtService,
     private jwtConfigService: JwtConfigService,
+    private mailService: MailService,
   ) {}
 
   async login(userEmail: string, password: string) {
@@ -119,6 +120,8 @@ export class AuthService {
     );
 
     if (result.affected === 0) throw new EmailNotExistsException();
+
+    await this.mailService.sendNewPassword(userEmail, password);
 
     return result.affected > 0;
   }
