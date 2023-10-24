@@ -5,6 +5,9 @@ import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { JwtConfigService } from 'src/config/jwt/config.service';
 import * as argon2 from 'argon2';
+import generator from 'generate-password-ts';
+import { UpdateResult } from 'typeorm';
+import { EmailNotExistsException } from 'src/common/exceptions/email-not-exists.exception';
 
 @Injectable()
 export class AuthService {
@@ -95,5 +98,28 @@ export class AuthService {
     });
 
     return { accessToken: accessToken, refreshToken: refreshToken };
+  }
+
+  async generateNewPassword(userEmail: string): Promise<boolean> {
+    const password = generator.generate({
+      length: 10,
+      numbers: true,
+      lowercase: true,
+      uppercase: true,
+    });
+
+    const hash = await bcryptjs.hash(password, 10);
+
+    const result = await this.userService.updatePartial(
+      'userEmail',
+      userEmail,
+      {
+        password: hash,
+      },
+    );
+
+    if (result.affected === 0) throw new EmailNotExistsException();
+
+    return result.affected > 0;
   }
 }

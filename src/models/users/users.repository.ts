@@ -14,7 +14,8 @@ export class UserRepository
     const password = generator.generate({
       length: 10,
       numbers: true,
-      symbols: true,
+      lowercase: true,
+      uppercase: true,
     });
     console.log(`password for new user: ${password}`);
     const hash = await bcryptjs.hash(password, 10);

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Query,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { Public } from 'src/common/decorators/public.decorator';
@@ -16,16 +24,24 @@ export class AuthController {
   }
 
   @Get('logout')
-  logout(@Req() req: PassportRequest) {
-    this.authService.logout(req.user.sub);
+  async logout(@Req() req: PassportRequest) {
+    await this.authService.logout(req.user.sub);
   }
 
   @Public()
   @UseGuards(RefreshTokenGuard)
   @Get('refresh')
-  refreshTokens(@Req() req: PassportRequest) {
+  async refreshTokens(@Req() req: PassportRequest) {
     const userId = req.user.sub;
     const refreshToken = req.user.refreshToken;
-    return this.authService.refreshTokens(userId, refreshToken);
+    return await this.authService.refreshTokens(userId, refreshToken);
+  }
+
+  @Public()
+  @Get('forgotpwd')
+  async forgotPassword(
+    @Query('user-email') userEmail: string,
+  ): Promise<boolean> {
+    return await this.authService.generateNewPassword(userEmail);
   }
 }
