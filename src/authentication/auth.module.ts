@@ -25,7 +25,7 @@ import { MailModule } from 'src/mail/mail.module';
       }),
       inject: [JwtConfigService],
     }),
-    ConfigModule,
+    //ConfigModule,
     PassportModule,
     MailModule,
   ],

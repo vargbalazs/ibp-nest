@@ -8,6 +8,7 @@ import { AppConfigService } from './config.service';
     ConfigModule.forRoot({
       envFilePath: `env/${process.env.NODE_ENV.trim()}.env`,
       load: [config],
+      isGlobal: true,
     }),
   ],
   providers: [AppConfigService],
