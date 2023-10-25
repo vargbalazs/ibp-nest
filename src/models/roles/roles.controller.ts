@@ -19,6 +19,13 @@ import { RemoveFromRoleGroupDto } from './dto/remove-from-rolegroup.dto';
 export class RoleController {
   constructor(private readonly roleService: RoleService) {}
 
+  @Get('role-with-rolegroups/:roleId')
+  async getRoleWithRoleGroups(
+    @Param('roleId') roleId: number,
+  ): Promise<RoleEntity> {
+    return new RoleEntity(await this.roleService.getRoleWithRoleGroups(roleId));
+  }
+
   @Get()
   async getRoles(): Promise<RoleEntity[]> {
     const roles = await this.roleService.findAll();

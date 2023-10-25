@@ -32,4 +32,8 @@ export class RoleService extends BaseService<
   ): Promise<boolean> {
     return await this.roleRepository.removeFromRoleGroup(roleId, roleGroup);
   }
+
+  async getRoleWithRoleGroups(roleId: number): Promise<RoleModel> {
+    return await this.roleRepository.findRoleWithRoleGroups(roleId);
+  }
 }

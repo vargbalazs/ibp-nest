@@ -16,7 +16,7 @@ export class RoleGroupModel implements RoleGroup {
   @Column()
   name: string;
 
-  @ManyToMany(() => RoleModel, (role) => role.roleGroups)
+  @ManyToMany(() => RoleModel, (role) => role.roleGroups, { eager: true })
   @JoinTable({ name: 'rolegroups_roles', synchronize: false })
   roles: RoleModel[];
 }

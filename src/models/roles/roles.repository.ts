@@ -12,6 +12,7 @@ export class RoleRepository
     roleGroup: RoleGroupModel,
   ): Promise<boolean> {
     // const roleModel = await this.findById(roleId);
+    // for this to work, we have to add the option 'eager: true' to RoleModel
     // roleModel.roleGroups.push(roleGroup);
 
     // using objects is too slow, that's why the raw query
@@ -36,5 +37,13 @@ export class RoleRepository
     );
 
     return true;
+  }
+
+  async findRoleWithRoleGroups(roleId: number): Promise<RoleModel> {
+    return await this.findOne({
+      where: { id: roleId },
+      relations: { roleGroups: true },
+      loadEagerRelations: false,
+    });
   }
 }

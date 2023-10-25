@@ -10,8 +10,6 @@ export class RoleModel implements Role {
   @Column()
   name: string;
 
-  @ManyToMany(() => RoleGroupModel, (roleGroup) => roleGroup.roles, {
-    eager: true,
-  })
+  @ManyToMany(() => RoleGroupModel, (roleGroup) => roleGroup.roles)
   roleGroups: RoleGroupModel[];
 }

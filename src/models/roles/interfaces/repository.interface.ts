@@ -15,6 +15,8 @@ export interface RoleModelRepository
     roleId: number,
     roleGroup: RoleGroupModel,
   ): Promise<boolean>;
+
+  findRoleWithRoleGroups(roleId: number): Promise<RoleModel>;
 }
 
 export const RoleModelRepository = Symbol('RoleModelRepository');
