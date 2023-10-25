@@ -4,6 +4,8 @@ import { CreateModuleDto } from '../dto/create-module.dto';
 import { UpdateModuleDto } from '../dto/update-module.dto';
 
 export interface ModuleModelRepository
-  extends BaseRepository<ModuleModel, CreateModuleDto, UpdateModuleDto> {}
+  extends BaseRepository<ModuleModel, CreateModuleDto, UpdateModuleDto> {
+  findAllWithSubModules(): Promise<ModuleModel[]>;
+}
 
 export const ModuleModelRepository = Symbol('ModuleModelRepository');

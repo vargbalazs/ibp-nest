@@ -17,4 +17,8 @@ export class ModuleService extends BaseService<
   ) {
     super(moduleRepository);
   }
+
+  async FindModulesWithSubModules(): Promise<ModuleModel[]> {
+    return this.moduleRepository.findAllWithSubModules();
+  }
 }
