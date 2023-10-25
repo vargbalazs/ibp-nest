@@ -5,13 +5,11 @@ import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtConfigService } from 'src/config/jwt/config.service';
 import { JwtConfigModule } from 'src/config/jwt/config.module';
-import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
 import { AccessTokenStrategy } from './strategies/access-token.strategy';
 import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
-import { MailModule } from 'src/mail/mail.module';
 
 @Module({
   imports: [
@@ -27,7 +25,7 @@ import { MailModule } from 'src/mail/mail.module';
     }),
     //ConfigModule,
     PassportModule,
-    MailModule,
+    //MailModule,
   ],
   providers: [
     AuthService,

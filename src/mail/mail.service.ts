@@ -15,4 +15,15 @@ export class MailService {
       },
     });
   }
+
+  async sendInitialPassword(userEmail: string, password: string) {
+    await this.mailerService.sendMail({
+      to: userEmail,
+      subject: 'Initial password',
+      template: './signup',
+      context: {
+        password: password,
+      },
+    });
+  }
 }
