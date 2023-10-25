@@ -121,7 +121,7 @@ export class AuthService {
 
     if (result.affected === 0) throw new EmailNotExistsException();
 
-    await this.mailService.sendNewPassword(userEmail, password);
+    this.mailService.sendNewPassword(userEmail, password);
 
     return result.affected > 0;
   }
