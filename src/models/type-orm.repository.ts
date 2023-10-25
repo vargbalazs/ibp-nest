@@ -16,7 +16,7 @@ export abstract class TypeOrmRepository<
 > extends Repository<T> {
   constructor(
     @InjectDataSource()
-    private dataSource: DataSource,
+    public dataSource: DataSource,
     @Inject(ENTITY) private readonly entity: EntityTarget<T>,
   ) {
     super(entity, dataSource.createEntityManager());

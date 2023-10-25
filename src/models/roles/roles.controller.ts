@@ -11,6 +11,9 @@ import { RoleService } from './roles.service';
 import { RoleEntity } from './serializers/role.serializer';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
+import { AssignToRoleGroupDto } from './dto/assign-to-rolegroup.dto';
+import { RoleGroupModel } from '../role-groups/entities/role-group.entity';
+import { RemoveFromRoleGroupDto } from './dto/remove-from-rolegroup.dto';
 
 @Controller('roles')
 export class RoleController {
@@ -30,6 +33,26 @@ export class RoleController {
   @Post()
   async create(@Body() createRoleDto: CreateRoleDto): Promise<RoleEntity> {
     return new RoleEntity(await this.roleService.createEntity(createRoleDto));
+  }
+
+  @Post('assign-to-rolegroup')
+  async assignToRoleGroup(
+    @Body() assignToRoleGroupDto: AssignToRoleGroupDto,
+  ): Promise<boolean> {
+    return await this.roleService.assignToRoleGroup(
+      assignToRoleGroupDto.roleId,
+      assignToRoleGroupDto.roleGroup as RoleGroupModel,
+    );
+  }
+
+  @Post('remove-from-rolegroup')
+  async removeFromRoleGroup(
+    @Body() removeFromRoleGroupDto: RemoveFromRoleGroupDto,
+  ): Promise<boolean> {
+    return await this.roleService.removeFromRoleGroup(
+      removeFromRoleGroupDto.roleId,
+      removeFromRoleGroupDto.roleGroup as RoleGroupModel,
+    );
   }
 
   @Put(':roleId')
