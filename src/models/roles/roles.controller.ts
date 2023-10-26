@@ -25,6 +25,15 @@ export class RoleController {
     return new RoleEntity(await this.roleService.getRoleWithRoleGroups(roleId));
   }
 
+  @Get('role-with-permissions/:roleId')
+  async getRoleWithPermissions(
+    @Param('roleId') roleId: number,
+  ): Promise<RoleEntity> {
+    return new RoleEntity(
+      await this.roleService.getRoleWithPermissions(roleId),
+    );
+  }
+
   @Get()
   async getRoles(): Promise<RoleEntity[]> {
     const roles = await this.roleService.findAll();

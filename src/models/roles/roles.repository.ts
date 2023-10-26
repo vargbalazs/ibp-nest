@@ -45,4 +45,12 @@ export class RoleRepository
       loadEagerRelations: false,
     });
   }
+
+  async findRoleWithPermissions(roleId: number): Promise<RoleModel> {
+    return await this.findOne({
+      where: { id: roleId },
+      relations: { permissions: true },
+      loadEagerRelations: false,
+    });
+  }
 }

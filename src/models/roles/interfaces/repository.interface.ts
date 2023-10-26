@@ -10,6 +10,8 @@ export interface RoleModelRepository
   removeFromRoleGroup(roleId: number, roleGroupId: number): Promise<boolean>;
 
   findRoleWithRoleGroups(roleId: number): Promise<RoleModel>;
+
+  findRoleWithPermissions(roleId: number): Promise<RoleModel>;
 }
 
 export const RoleModelRepository = Symbol('RoleModelRepository');
