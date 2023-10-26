@@ -17,4 +17,12 @@ export class PermissionService extends BaseService<
   ) {
     super(permissionRepository);
   }
+
+  async assignToRole(permissionId: number, roleId: number): Promise<boolean> {
+    return await this.permissionRepository.assignToRole(permissionId, roleId);
+  }
+
+  async removeFromRole(permissionId: number, roleId: number): Promise<boolean> {
+    return await this.permissionRepository.removeFromRole(permissionId, roleId);
+  }
 }

@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Role } from '../interfaces/role.interface';
 import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
+import { PermissionModel } from 'src/models/permissions/entities/permission.entity';
 
 @Entity({ name: 'roles', synchronize: false })
 export class RoleModel implements Role {
@@ -12,4 +19,10 @@ export class RoleModel implements Role {
 
   @ManyToMany(() => RoleGroupModel, (roleGroup) => roleGroup.roles)
   roleGroups: RoleGroupModel[];
+
+  @ManyToMany(() => PermissionModel, (permission) => permission.roles, {
+    eager: true,
+  })
+  @JoinTable({ name: 'roles_permissions', synchronize: false })
+  permissions: PermissionModel[];
 }

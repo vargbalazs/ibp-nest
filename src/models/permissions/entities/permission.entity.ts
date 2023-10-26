@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Permission } from '../interfaces/permission.interface';
 import { OperationModel } from 'src/models/operations/entities/operation.entity';
+import { RoleModel } from 'src/models/roles/entities/role.entity';
 
 @Entity({ name: 'permissions', synchronize: false })
 export class PermissionModel implements Permission {
@@ -14,4 +21,7 @@ export class PermissionModel implements Permission {
     nullable: false,
   })
   operation: OperationModel;
+
+  @ManyToMany(() => RoleModel, (role) => role.permissions)
+  roles: RoleModel[];
 }

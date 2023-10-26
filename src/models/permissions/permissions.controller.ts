@@ -11,6 +11,8 @@ import { PermissionService } from './permissions.service';
 import { PermissionEntity } from './serializers/permission.serializer';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
+import { AssignToRoleDto } from './dto/assign-to-role.dto';
+import { RemoveFromRoleDto } from './dto/remove-from-role.dto';
 
 @Controller('permissions')
 export class PermissionController {
@@ -37,6 +39,26 @@ export class PermissionController {
   ): Promise<PermissionEntity> {
     return new PermissionEntity(
       await this.permissionService.createEntity(createPermissionDto),
+    );
+  }
+
+  @Post('assign-to-role')
+  async assignToRole(
+    @Body() assignToRoleDto: AssignToRoleDto,
+  ): Promise<boolean> {
+    return await this.permissionService.assignToRole(
+      assignToRoleDto.permissionId,
+      assignToRoleDto.roleId,
+    );
+  }
+
+  @Post('remove-from-role')
+  async removeFromRole(
+    @Body() removeFromRoleDto: RemoveFromRoleDto,
+  ): Promise<boolean> {
+    return await this.permissionService.removeFromRole(
+      removeFromRoleDto.permissionId,
+      removeFromRoleDto.roleId,
     );
   }
 

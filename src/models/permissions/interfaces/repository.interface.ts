@@ -8,6 +8,10 @@ export interface PermissionModelRepository
     PermissionModel,
     CreatePermissionDto,
     UpdatePermissionDto
-  > {}
+  > {
+  assignToRole(permissionId: number, roleId: number): Promise<boolean>;
+
+  removeFromRole(permissionId: number, roleId: number): Promise<boolean>;
+}
 
 export const PermissionModelRepository = Symbol('PermissionModelRepository');
