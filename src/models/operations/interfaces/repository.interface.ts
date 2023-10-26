@@ -10,6 +10,10 @@ export interface OperationModelRepository
     UpdateOperationDto
   > {
   findAllWithPermissions(): Promise<OperationModel[]>;
+
+  findAllWithSubModules(): Promise<OperationModel[]>;
+
+  findOperationDetails(operationId: number): Promise<OperationModel>;
 }
 
 export const OperationModelRepository = Symbol('OperationModelRepository');

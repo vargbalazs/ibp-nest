@@ -9,4 +9,15 @@ export class OperationRepository
   async findAllWithPermissions(): Promise<OperationModel[]> {
     return this.find({ relations: { permissions: true } });
   }
+
+  async findAllWithSubModules(): Promise<OperationModel[]> {
+    return this.find({ relations: { subModule: true } });
+  }
+
+  async findOperationDetails(operationId: number): Promise<OperationModel> {
+    return this.findOne({
+      where: { id: operationId },
+      relations: { subModule: true, permissions: true },
+    });
+  }
 }

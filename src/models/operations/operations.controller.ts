@@ -23,6 +23,22 @@ export class OperationController {
     return operations.map((operation) => new OperationEntity(operation));
   }
 
+  @Get('with-submodules')
+  async getWithSubModules(): Promise<OperationEntity[]> {
+    const operations =
+      await this.operationService.findOperationsWithSubModules();
+    return operations.map((operation) => new OperationEntity(operation));
+  }
+
+  @Get('with-details/:operationId')
+  async getWithDetails(
+    @Param('operationId') operationId: number,
+  ): Promise<OperationEntity> {
+    return new OperationEntity(
+      await this.operationService.findOperationDetails(operationId),
+    );
+  }
+
   @Get()
   async getOperations(): Promise<OperationEntity[]> {
     const operations = await this.operationService.findAll();

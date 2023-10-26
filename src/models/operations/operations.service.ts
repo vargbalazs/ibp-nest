@@ -21,4 +21,12 @@ export class OperationService extends BaseService<
   async findOperationsWithPermissions(): Promise<OperationModel[]> {
     return this.operationRepository.findAllWithPermissions();
   }
+
+  async findOperationsWithSubModules(): Promise<OperationModel[]> {
+    return this.operationRepository.findAllWithSubModules();
+  }
+
+  async findOperationDetails(operationId: number): Promise<OperationModel> {
+    return this.operationRepository.findOperationDetails(operationId);
+  }
 }
