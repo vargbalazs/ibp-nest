@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Action } from '../interfaces/action.interface';
+import { Permission } from '../interfaces/permission.interface';
 
-@Entity({ name: 'actions', synchronize: false })
-export class ActionModel implements Action {
+@Entity({ name: 'permissions', synchronize: true })
+export class PermissionModel implements Permission {
   @PrimaryGeneratedColumn()
   id: number;
 

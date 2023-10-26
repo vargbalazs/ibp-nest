@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsNumber } from 'class-validator';
-import { CreateActionDto } from './create-permission.dto';
+import { CreatePermissionDto } from './create-permission.dto';
 
-export class UpdateActionDto extends CreateActionDto {
+export class UpdatePermissionDto extends CreatePermissionDto {
   @IsNotEmpty()
   @IsNumber()
   id: number;

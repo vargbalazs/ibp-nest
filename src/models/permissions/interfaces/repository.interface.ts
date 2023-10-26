@@ -1,9 +1,13 @@
 import { BaseRepository } from 'src/models/base-repository.interface';
-import { ActionModel } from '../entities/permission.entity';
-import { CreateActionDto } from '../dto/create-permission.dto';
-import { UpdateActionDto } from '../dto/update-permission.dto';
+import { PermissionModel } from '../entities/permission.entity';
+import { CreatePermissionDto } from '../dto/create-permission.dto';
+import { UpdatePermissionDto } from '../dto/update-permission.dto';
 
-export interface ActionModelRepository
-  extends BaseRepository<ActionModel, CreateActionDto, UpdateActionDto> {}
+export interface PermissionModelRepository
+  extends BaseRepository<
+    PermissionModel,
+    CreatePermissionDto,
+    UpdatePermissionDto
+  > {}
 
-export const ActionModelRepository = Symbol('ActionModelRepository');
+export const PermissionModelRepository = Symbol('PermissionModelRepository');
