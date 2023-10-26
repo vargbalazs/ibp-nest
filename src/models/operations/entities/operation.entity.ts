@@ -1,5 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Operation } from '../interfaces/operation.interface';
+import { PermissionModel } from 'src/models/permissions/entities/permission.entity';
 
 @Entity({ name: 'operations', synchronize: false })
 export class OperationModel implements Operation {
@@ -8,4 +9,7 @@ export class OperationModel implements Operation {
 
   @Column()
   name: string;
+
+  @OneToMany(() => PermissionModel, (permission) => permission.operation)
+  permissions: PermissionModel[];
 }
