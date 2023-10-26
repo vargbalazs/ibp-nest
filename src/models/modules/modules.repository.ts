@@ -9,4 +9,11 @@ export class ModuleRepository
   async findAllWithSubModules(): Promise<ModuleModel[]> {
     return this.find({ relations: { subModules: true } });
   }
+
+  async findModuleWithSubModules(moduleId: number): Promise<ModuleModel> {
+    return this.findOne({
+      where: { id: moduleId },
+      relations: { subModules: true },
+    });
+  }
 }

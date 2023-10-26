@@ -22,6 +22,15 @@ export class ModuleController {
     return modules.map((module) => new ModuleEntity(module));
   }
 
+  @Get('with-submodules/:moduleId')
+  async getModuleWithSubmodules(
+    @Param('moduleId') moduleId: number,
+  ): Promise<ModuleEntity> {
+    return new ModuleEntity(
+      await this.moduleService.findModuleWithSubModules(moduleId),
+    );
+  }
+
   @Get()
   async getModules(): Promise<ModuleEntity[]> {
     const modules = await this.moduleService.findAll();
