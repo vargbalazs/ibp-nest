@@ -1,6 +1,13 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Operation } from '../interfaces/operation.interface';
 import { PermissionModel } from 'src/models/permissions/entities/permission.entity';
+import { SubModuleModel } from 'src/models/sub-modules/entities/sub-module.entity';
 
 @Entity({ name: 'operations', synchronize: false })
 export class OperationModel implements Operation {
@@ -12,4 +19,9 @@ export class OperationModel implements Operation {
 
   @OneToMany(() => PermissionModel, (permission) => permission.operation)
   permissions: PermissionModel[];
+
+  @ManyToOne(() => SubModuleModel, (subModule) => subModule.operations, {
+    nullable: false,
+  })
+  subModule: SubModuleModel;
 }
