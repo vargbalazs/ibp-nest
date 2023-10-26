@@ -1,6 +1,4 @@
-import { Type } from 'class-transformer';
-import { IsNotEmpty, IsNumber, ValidateNested } from 'class-validator';
-import { BaseEntityDto } from 'src/models/base/base-entity.dto';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class AssignToRoleGroupDto {
   @IsNotEmpty()
@@ -8,7 +6,6 @@ export class AssignToRoleGroupDto {
   roleId: number;
 
   @IsNotEmpty()
-  @ValidateNested()
-  @Type(() => BaseEntityDto)
-  roleGroup: BaseEntityDto;
+  @IsNumber()
+  roleGroupId: number;
 }

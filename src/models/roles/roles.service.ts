@@ -21,16 +21,16 @@ export class RoleService extends BaseService<
 
   async assignToRoleGroup(
     roleId: number,
-    roleGroup: RoleGroupModel,
+    roleGroupId: number,
   ): Promise<boolean> {
-    return await this.roleRepository.assignToRoleGroup(roleId, roleGroup);
+    return await this.roleRepository.assignToRoleGroup(roleId, roleGroupId);
   }
 
   async removeFromRoleGroup(
     roleId: number,
-    roleGroup: RoleGroupModel,
+    roleGroupId: number,
   ): Promise<boolean> {
-    return await this.roleRepository.removeFromRoleGroup(roleId, roleGroup);
+    return await this.roleRepository.removeFromRoleGroup(roleId, roleGroupId);
   }
 
   async getRoleWithRoleGroups(roleId: number): Promise<RoleModel> {

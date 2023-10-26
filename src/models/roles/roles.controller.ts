@@ -48,7 +48,7 @@ export class RoleController {
   ): Promise<boolean> {
     return await this.roleService.assignToRoleGroup(
       assignToRoleGroupDto.roleId,
-      assignToRoleGroupDto.roleGroup as RoleGroupModel,
+      assignToRoleGroupDto.roleGroupId,
     );
   }
 
@@ -58,7 +58,7 @@ export class RoleController {
   ): Promise<boolean> {
     return await this.roleService.removeFromRoleGroup(
       removeFromRoleGroupDto.roleId,
-      removeFromRoleGroupDto.roleGroup as RoleGroupModel,
+      removeFromRoleGroupDto.roleGroupId,
     );
   }
 
