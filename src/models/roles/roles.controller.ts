@@ -12,7 +12,6 @@ import { RoleEntity } from './serializers/role.serializer';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { AssignToRoleGroupDto } from './dto/assign-to-rolegroup.dto';
-import { RoleGroupModel } from '../role-groups/entities/role-group.entity';
 import { RemoveFromRoleGroupDto } from './dto/remove-from-rolegroup.dto';
 
 @Controller('roles')

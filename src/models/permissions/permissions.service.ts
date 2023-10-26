@@ -25,4 +25,10 @@ export class PermissionService extends BaseService<
   async removeFromRole(permissionId: number, roleId: number): Promise<boolean> {
     return await this.permissionRepository.removeFromRole(permissionId, roleId);
   }
+
+  async getPermissionWithRoles(permissionId: number): Promise<PermissionModel> {
+    return await this.permissionRepository.findPermissionWithRoles(
+      permissionId,
+    );
+  }
 }

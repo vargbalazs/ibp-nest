@@ -12,6 +12,8 @@ export interface PermissionModelRepository
   assignToRole(permissionId: number, roleId: number): Promise<boolean>;
 
   removeFromRole(permissionId: number, roleId: number): Promise<boolean>;
+
+  findPermissionWithRoles(permissionId: number): Promise<PermissionModel>;
 }
 
 export const PermissionModelRepository = Symbol('PermissionModelRepository');

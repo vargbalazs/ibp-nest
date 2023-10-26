@@ -25,4 +25,14 @@ export class PermissionRepository
 
     return true;
   }
+
+  async findPermissionWithRoles(
+    permissionId: number,
+  ): Promise<PermissionModel> {
+    return await this.findOne({
+      where: { id: permissionId },
+      relations: { roles: true },
+      loadEagerRelations: false,
+    });
+  }
 }

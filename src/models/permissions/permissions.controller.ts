@@ -18,6 +18,15 @@ import { RemoveFromRoleDto } from './dto/remove-from-role.dto';
 export class PermissionController {
   constructor(private readonly permissionService: PermissionService) {}
 
+  @Get('permission-with-roles/:permissionId')
+  async getPermissionWithRoles(
+    @Param('permissionId') permissionId: number,
+  ): Promise<PermissionEntity> {
+    return new PermissionEntity(
+      await this.permissionService.getPermissionWithRoles(permissionId),
+    );
+  }
+
   @Get()
   async getPermissions(): Promise<PermissionEntity[]> {
     const permissions = await this.permissionService.findAll();
