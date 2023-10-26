@@ -8,6 +8,8 @@ export interface OperationModelRepository
     OperationModel,
     CreateOperationDto,
     UpdateOperationDto
-  > {}
+  > {
+  findAllWithPermissions(): Promise<OperationModel[]>;
+}
 
 export const OperationModelRepository = Symbol('OperationModelRepository');

@@ -1,3 +1,4 @@
+import { OperationsModule } from 'src/models/operations/operations.module';
 import { Permission } from '../interfaces/permission.interface';
 
 export class PermissionEntity implements Permission {
@@ -7,4 +8,5 @@ export class PermissionEntity implements Permission {
 
   id: number;
   name: string;
+  operation: OperationsModule;
 }

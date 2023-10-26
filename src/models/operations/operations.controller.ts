@@ -16,6 +16,13 @@ import { UpdateOperationDto } from './dto/update-operation.dto';
 export class OperationController {
   constructor(private readonly operationService: OperationService) {}
 
+  @Get('with-permissions')
+  async getWithPermissions(): Promise<OperationEntity[]> {
+    const operations =
+      await this.operationService.findOperationsWithPermissions();
+    return operations.map((operation) => new OperationEntity(operation));
+  }
+
   @Get()
   async getOperations(): Promise<OperationEntity[]> {
     const operations = await this.operationService.findAll();

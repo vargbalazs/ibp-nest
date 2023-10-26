@@ -17,4 +17,8 @@ export class OperationService extends BaseService<
   ) {
     super(operationRepository);
   }
+
+  async findOperationsWithPermissions(): Promise<OperationModel[]> {
+    return this.operationRepository.findAllWithPermissions();
+  }
 }
