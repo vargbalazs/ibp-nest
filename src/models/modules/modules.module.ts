@@ -5,7 +5,7 @@ import { ModuleService } from './modules.service';
 import { ModuleController } from './modules.controller';
 import { ModuleRepository } from './modules.repository';
 import { ModuleModelRepository } from './interfaces/repository.interface';
-import { ModuleEntity } from './serializers/Module.serializer';
+import { ModuleEntity } from './serializers/module.serializer';
 import {
   ENTITY,
   SERIALIZER,

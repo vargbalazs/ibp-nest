@@ -1,4 +1,4 @@
-import { RoleModel } from './entities/Role.entity';
+import { RoleModel } from './entities/role.entity';
 import { RoleModelRepository } from './interfaces/repository.interface';
 import { TypeOrmRepository } from '../type-orm.repository';
 
