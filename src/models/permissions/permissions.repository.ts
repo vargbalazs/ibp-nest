@@ -31,7 +31,7 @@ export class PermissionRepository
   ): Promise<PermissionModel> {
     return await this.findOne({
       where: { id: permissionId },
-      relations: { roles: true },
+      relations: { roles: true, operation: true },
       loadEagerRelations: false,
     });
   }

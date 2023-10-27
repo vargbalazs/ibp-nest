@@ -16,6 +16,15 @@ import { UpdateSubModuleDto } from './dto/update-sub-module.dto';
 export class SubModuleController {
   constructor(private readonly subModuleService: SubModuleService) {}
 
+  @Get('with-operations/:subModuleId')
+  async getSubModuleWithOperations(
+    @Param('subModuleId') subModuleId: number,
+  ): Promise<SubModuleEntity> {
+    return new SubModuleEntity(
+      await this.subModuleService.getSubModuleWithOperations(subModuleId),
+    );
+  }
+
   @Get()
   async getSubModules(): Promise<SubModuleEntity[]> {
     const subModules = await this.subModuleService.findAll();

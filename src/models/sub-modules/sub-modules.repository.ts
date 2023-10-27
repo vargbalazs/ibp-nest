@@ -4,4 +4,14 @@ import { TypeOrmRepository } from '../type-orm.repository';
 
 export class SubModuleRepository
   extends TypeOrmRepository<SubModuleModel>
-  implements SubModuleModelRepository {}
+  implements SubModuleModelRepository
+{
+  async findSubModuleWithOperations(
+    subModuleId: number,
+  ): Promise<SubModuleModel> {
+    return await this.findOne({
+      where: { id: subModuleId },
+      relations: { operations: true },
+    });
+  }
+}

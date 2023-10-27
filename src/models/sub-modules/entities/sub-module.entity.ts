@@ -19,6 +19,7 @@ export class SubModuleModel implements SubModule {
 
   @ManyToOne(() => ModuleModel, (module) => module.subModules, {
     nullable: false,
+    eager: true,
   })
   module: ModuleModel;
 

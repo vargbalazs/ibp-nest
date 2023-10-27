@@ -8,6 +8,8 @@ export interface SubModuleModelRepository
     SubModuleModel,
     CreateSubModuleDto,
     UpdateSubModuleDto
-  > {}
+  > {
+  findSubModuleWithOperations(subModuleId: number): Promise<SubModuleModel>;
+}
 
 export const SubModuleModelRepository = Symbol('SubModuleModelRepository');

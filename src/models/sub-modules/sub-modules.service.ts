@@ -17,4 +17,10 @@ export class SubModuleService extends BaseService<
   ) {
     super(subModuleRepository);
   }
+
+  async getSubModuleWithOperations(
+    subModuleId: number,
+  ): Promise<SubModuleModel> {
+    return this.subModuleRepository.findSubModuleWithOperations(subModuleId);
+  }
 }

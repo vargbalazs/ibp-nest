@@ -21,7 +21,7 @@ export class RoleModel implements Role {
   roleGroups: RoleGroupModel[];
 
   @ManyToMany(() => PermissionModel, (permission) => permission.roles, {
-    eager: true,
+    eager: false,
   })
   @JoinTable({ name: 'roles_permissions', synchronize: false })
   permissions: PermissionModel[];
