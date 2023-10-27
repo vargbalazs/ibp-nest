@@ -8,6 +8,12 @@ export interface RoleGroupModelRepository
     RoleGroupModel,
     CreateRoleGroupDto,
     UpdateRoleGroupDto
-  > {}
+  > {
+  assignToUser(roleGroupId: number, userId: string): Promise<boolean>;
+
+  removeFromUser(roleGroupId: number, userId: string): Promise<boolean>;
+
+  findRoleGroupWithUsers(roleGroupId: number): Promise<RoleGroupModel>;
+}
 
 export const RoleGroupModelRepository = Symbol('RoleGroupModelRepository');

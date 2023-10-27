@@ -23,4 +23,7 @@ export class UserEntity implements User {
   active: boolean;
   notLocked: boolean;
   firstLogin: boolean;
+
+  @Exclude()
+  refreshToken: string;
 }

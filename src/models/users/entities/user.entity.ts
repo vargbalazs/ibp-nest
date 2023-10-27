@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../interfaces/user.interface';
+import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
 
 @Entity({ name: 'users', synchronize: false })
 export class UserModel implements User {
@@ -46,4 +49,10 @@ export class UserModel implements User {
 
   @Column({ nullable: true })
   refreshToken: string;
+
+  @ManyToMany(() => RoleGroupModel, (roleGroup) => roleGroup.users, {
+    eager: false,
+  })
+  @JoinTable({ name: 'users_rolegroups', synchronize: false })
+  roleGroups: RoleGroupModel[];
 }

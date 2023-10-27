@@ -31,4 +31,11 @@ export class UserRepository
 
     return this.save(newUser);
   }
+
+  async findUserWithRoleGroups(userId: string): Promise<UserModel> {
+    return await this.findOne({
+      where: { userId: userId },
+      relations: { roleGroups: true },
+    });
+  }
 }

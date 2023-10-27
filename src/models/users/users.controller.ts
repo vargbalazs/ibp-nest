@@ -34,6 +34,13 @@ export class UserController {
     return !!user;
   }
 
+  @Get('user-with-rolegroups/:userId')
+  async getUserWithRoleGroups(
+    @Param('userId') userId: string,
+  ): Promise<UserEntity> {
+    return new UserEntity(await this.userService.getUserWithRoleGroups(userId));
+  }
+
   @Get()
   async getAllUsers(): Promise<UserEntity[]> {
     const users = await this.userService.findAll();

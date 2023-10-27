@@ -17,4 +17,16 @@ export class RoleGroupService extends BaseService<
   ) {
     super(roleGroupRepository);
   }
+
+  async assignToUser(roleGroupId: number, userId: string): Promise<boolean> {
+    return await this.roleGroupRepository.assignToUser(roleGroupId, userId);
+  }
+
+  async removeFromUser(roleGroupId: number, userId: string): Promise<boolean> {
+    return await this.roleGroupRepository.removeFromUser(roleGroupId, userId);
+  }
+
+  async getRoleGroupWithUsers(roleGroupId: number): Promise<RoleGroupModel> {
+    return await this.roleGroupRepository.findRoleGroupWithUsers(roleGroupId);
+  }
 }
