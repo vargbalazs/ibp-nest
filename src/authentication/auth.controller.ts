@@ -37,8 +37,12 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(@Req() req: PassportRequest) {
+  async logout(
+    @Req() req: PassportRequest,
+    @Res({ passthrough: true }) res: Response,
+  ) {
     await this.authService.logout(req.user.sub);
+    this.authService.clearTokensFromCookie(res);
   }
 
   @Public()

@@ -129,7 +129,7 @@ export class AuthService {
 
   storeTokenInCookie(res: Response, accessToken: string, refreshToken: string) {
     res.cookie('accessToken', accessToken, {
-      maxAge: 1000 * 60 * 15,
+      maxAge: 1000 * 60 * 60 * 24 * 1,
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
@@ -140,5 +140,10 @@ export class AuthService {
       secure: true,
       sameSite: 'strict',
     });
+  }
+
+  clearTokensFromCookie(res: Response) {
+    res.cookie('accessToken', '', { expires: new Date(Date.now()) });
+    res.cookie('refreshToken', '', { expires: new Date(Date.now()) });
   }
 }
