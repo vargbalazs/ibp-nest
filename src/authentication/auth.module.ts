@@ -10,6 +10,8 @@ import { PassportModule } from '@nestjs/passport';
 import { AccessTokenStrategy } from './strategies/access-token.strategy';
 import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
+import { AccessTokenCookieStrategy } from './strategies/access-token-cookie.strategy';
+import { AccessTokenCookieGuard } from './guards/access-token-cookie.guard';
 
 @Module({
   imports: [
@@ -30,8 +32,12 @@ import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
   providers: [
     AuthService,
     JwtConfigService,
-    { provide: APP_GUARD, useClass: AccessTokenGuard },
-    AccessTokenStrategy,
+    {
+      provide: APP_GUARD,
+      useClass: AccessTokenCookieGuard /*AccessTokenGuard*/,
+    },
+    //AccessTokenStrategy,
+    AccessTokenCookieStrategy,
     RefreshTokenStrategy,
   ],
   controllers: [AuthController],

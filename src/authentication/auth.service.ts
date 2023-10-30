@@ -8,6 +8,7 @@ import * as argon2 from 'argon2';
 import generator from 'generate-password-ts';
 import { EmailNotExistsException } from 'src/common/exceptions/email-not-exists.exception';
 import { MailService } from 'src/mail/mail.service';
+import { Response } from 'express';
 
 @Injectable()
 export class AuthService {
@@ -124,5 +125,20 @@ export class AuthService {
     this.mailService.sendNewPassword(userEmail, password);
 
     return result.affected > 0;
+  }
+
+  storeTokenInCookie(res: Response, accessToken: string, refreshToken: string) {
+    res.cookie('accessToken', accessToken, {
+      maxAge: 1000 * 60 * 15,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+    });
+    res.cookie('refreshToken', refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+    });
   }
 }
