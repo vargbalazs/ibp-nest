@@ -12,6 +12,7 @@ import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
 import { AccessTokenCookieStrategy } from './strategies/access-token-cookie.strategy';
 import { AccessTokenCookieGuard } from './guards/access-token-cookie.guard';
+import { RefreshTokenCookieStrategy } from './strategies/refresh-token-cookie.strategy';
 
 @Module({
   imports: [
@@ -38,7 +39,8 @@ import { AccessTokenCookieGuard } from './guards/access-token-cookie.guard';
     },
     //AccessTokenStrategy,
     AccessTokenCookieStrategy,
-    RefreshTokenStrategy,
+    RefreshTokenCookieStrategy,
+    //RefreshTokenStrategy,
   ],
   controllers: [AuthController],
 })

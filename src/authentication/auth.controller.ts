@@ -14,6 +14,7 @@ import { Public } from 'src/common/decorators/public.decorator';
 import { RefreshTokenGuard } from './guards/refresh-token.guard';
 import { PassportRequest } from './interfaces/passport-request.interface';
 import { Response } from 'express';
+import { RefreshTokenCookieGuard } from './guards/refresh-token-cookie.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -46,12 +47,21 @@ export class AuthController {
   }
 
   @Public()
-  @UseGuards(RefreshTokenGuard)
+  //@UseGuards(RefreshTokenGuard)
+  @UseGuards(RefreshTokenCookieGuard)
   @Get('refresh')
-  async refreshTokens(@Req() req: PassportRequest) {
+  async refreshTokens(
+    @Req() req: PassportRequest,
+    @Res({ passthrough: true }) res: Response,
+  ) {
     const userId = req.user.sub;
     const refreshToken = req.user.refreshToken;
-    return await this.authService.refreshTokens(userId, refreshToken);
+    const tokens = await this.authService.refreshTokens(userId, refreshToken);
+    this.authService.storeTokenInCookie(
+      res,
+      tokens.accessToken,
+      tokens.refreshToken,
+    );
   }
 
   @Public()
