@@ -129,13 +129,13 @@ export class AuthService {
 
   storeTokenInCookie(res: Response, accessToken: string, refreshToken: string) {
     res.cookie('accessToken', accessToken, {
-      maxAge: 1000 * 60 * 60 * 24 * 1,
+      maxAge: 1000 * 60 * 60 * 24 * 5,
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
     });
     res.cookie('refreshToken', refreshToken, {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
+      maxAge: 1000 * 60 * 60 * 24 * 20,
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
