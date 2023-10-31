@@ -49,7 +49,10 @@ async function bootstrap() {
       'Jwt-Token',
       'Authorization',
       'Access-Control-Allow-Origin',
+      'Access-Control-Allow-Credentials',
+      'Set-Cookie',
     ],
+    credentials: true,
   });
 
   await app.listen(appConfig.port);
