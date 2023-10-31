@@ -1,6 +1,7 @@
 export interface Config {
-  maxAge: number;
+  maxAgeAccessToken: number;
+  maxAgeRefreshToken: number;
   httpOnly: boolean;
   secure: boolean;
-  sameSite: string;
+  sameSite: boolean | 'lax' | 'strict' | 'none';
 }

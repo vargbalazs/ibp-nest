@@ -9,6 +9,7 @@ import generator from 'generate-password-ts';
 import { EmailNotExistsException } from 'src/common/exceptions/email-not-exists.exception';
 import { MailService } from 'src/mail/mail.service';
 import { Response } from 'express';
+import { CookieConfigService } from 'src/config/cookie/config.service';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
     private jwtService: JwtService,
     private jwtConfigService: JwtConfigService,
     private mailService: MailService,
+    private cookieConfigService: CookieConfigService,
   ) {}
 
   async login(userEmail: string, password: string) {
@@ -129,16 +131,16 @@ export class AuthService {
 
   storeTokenInCookie(res: Response, accessToken: string, refreshToken: string) {
     res.cookie('accessToken', accessToken, {
-      maxAge: 1000 * 60 * 60 * 24 * 5,
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
+      maxAge: this.cookieConfigService.maxAgeAccessToken,
+      httpOnly: this.cookieConfigService.httpOnly,
+      secure: this.cookieConfigService.secure,
+      sameSite: this.cookieConfigService.sameSite,
     });
     res.cookie('refreshToken', refreshToken, {
-      maxAge: 1000 * 60 * 60 * 24 * 20,
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
+      maxAge: this.cookieConfigService.maxAgeRefreshToken,
+      httpOnly: this.cookieConfigService.httpOnly,
+      secure: this.cookieConfigService.secure,
+      sameSite: this.cookieConfigService.sameSite,
     });
   }
 

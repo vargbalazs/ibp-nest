@@ -13,6 +13,8 @@ import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
 import { AccessTokenCookieStrategy } from './strategies/access-token-cookie.strategy';
 import { AccessTokenCookieGuard } from './guards/access-token-cookie.guard';
 import { RefreshTokenCookieStrategy } from './strategies/refresh-token-cookie.strategy';
+import { CookieConfigService } from 'src/config/cookie/config.service';
+import { CookieConfigModule } from 'src/config/cookie/config.module';
 
 @Module({
   imports: [
@@ -29,10 +31,12 @@ import { RefreshTokenCookieStrategy } from './strategies/refresh-token-cookie.st
     //ConfigModule,
     PassportModule,
     //MailModule,
+    CookieConfigModule,
   ],
   providers: [
     AuthService,
     JwtConfigService,
+    CookieConfigService,
     {
       provide: APP_GUARD,
       useClass: AccessTokenCookieGuard /*AccessTokenGuard*/,

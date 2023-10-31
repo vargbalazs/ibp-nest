@@ -6,8 +6,12 @@ import { Config } from './config.interface';
 export class CookieConfigService {
   constructor(private configService: ConfigService) {}
 
-  get maxAge(): number {
-    return this.configService.get<Config>('cookie').maxAge;
+  get maxAgeAccessToken(): number {
+    return this.configService.get<Config>('cookie').maxAgeAccessToken;
+  }
+
+  get maxAgeRefreshToken(): number {
+    return this.configService.get<Config>('cookie').maxAgeRefreshToken;
   }
 
   get httpOnly(): boolean {
@@ -18,7 +22,7 @@ export class CookieConfigService {
     return this.configService.get<Config>('cookie').secure;
   }
 
-  get sameSite(): string {
+  get sameSite(): boolean | 'lax' | 'strict' | 'none' {
     return this.configService.get<Config>('cookie').sameSite;
   }
 }
