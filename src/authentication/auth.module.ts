@@ -10,9 +10,6 @@ import { PassportModule } from '@nestjs/passport';
 import { AccessTokenStrategy } from './strategies/access-token.strategy';
 import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
-import { AccessTokenCookieStrategy } from './strategies/access-token-cookie.strategy';
-import { AccessTokenCookieGuard } from './guards/access-token-cookie.guard';
-import { RefreshTokenCookieStrategy } from './strategies/refresh-token-cookie.strategy';
 import { CookieConfigService } from 'src/config/cookie/config.service';
 import { CookieConfigModule } from 'src/config/cookie/config.module';
 
@@ -39,12 +36,10 @@ import { CookieConfigModule } from 'src/config/cookie/config.module';
     CookieConfigService,
     {
       provide: APP_GUARD,
-      useClass: AccessTokenCookieGuard /*AccessTokenGuard*/,
+      useClass: AccessTokenGuard,
     },
-    //AccessTokenStrategy,
-    AccessTokenCookieStrategy,
-    RefreshTokenCookieStrategy,
-    //RefreshTokenStrategy,
+    AccessTokenStrategy,
+    RefreshTokenStrategy,
   ],
   controllers: [AuthController],
 })

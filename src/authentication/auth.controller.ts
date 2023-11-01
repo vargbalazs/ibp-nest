@@ -26,15 +26,16 @@ export class AuthController {
     @Body() loginDto: LoginDto,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const tokens = await this.authService.login(
-      loginDto.userEmail,
-      loginDto.password,
-    );
-    this.authService.storeTokenInCookie(
-      res,
-      tokens.accessToken,
-      tokens.refreshToken,
-    );
+    return await this.authService.login(loginDto.userEmail, loginDto.password);
+    // const tokens = await this.authService.login(
+    //   loginDto.userEmail,
+    //   loginDto.password,
+    // );
+    // this.authService.storeTokenInCookie(
+    //   res,
+    //   tokens.accessToken,
+    //   tokens.refreshToken,
+    // );
   }
 
   @Get('logout')
@@ -43,12 +44,12 @@ export class AuthController {
     @Res({ passthrough: true }) res: Response,
   ) {
     await this.authService.logout(req.user.sub);
-    this.authService.clearTokensFromCookie(res);
+    // this.authService.clearTokensFromCookie(res);
   }
 
   @Public()
-  //@UseGuards(RefreshTokenGuard)
-  @UseGuards(RefreshTokenCookieGuard)
+  @UseGuards(RefreshTokenGuard)
+  // @UseGuards(RefreshTokenCookieGuard)
   @Get('refresh')
   async refreshTokens(
     @Req() req: PassportRequest,
@@ -56,12 +57,13 @@ export class AuthController {
   ) {
     const userId = req.user.sub;
     const refreshToken = req.user.refreshToken;
-    const tokens = await this.authService.refreshTokens(userId, refreshToken);
-    this.authService.storeTokenInCookie(
-      res,
-      tokens.accessToken,
-      tokens.refreshToken,
-    );
+    return await this.authService.refreshTokens(userId, refreshToken);
+    // const tokens = await this.authService.refreshTokens(userId, refreshToken);
+    // this.authService.storeTokenInCookie(
+    //   res,
+    //   tokens.accessToken,
+    //   tokens.refreshToken,
+    // );
   }
 
   @Public()
