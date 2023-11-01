@@ -20,7 +20,7 @@ async function bootstrap() {
     }),
   );
 
-  app.use(cookieParser());
+  // app.use(cookieParser());
 
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
@@ -49,7 +49,6 @@ async function bootstrap() {
       'Authorization',
       'Access-Control-Allow-Origin',
     ],
-    credentials: true,
   });
 
   await app.listen(appConfig.port);
