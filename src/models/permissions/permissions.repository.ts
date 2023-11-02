@@ -8,7 +8,7 @@ export class PermissionRepository
 {
   async assignToRole(permissionId: number, roleId: number): Promise<boolean> {
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'INSERT INTO roles_permissions VALUES($1, $2)',
       [roleId, permissionId],
     );
@@ -18,7 +18,7 @@ export class PermissionRepository
 
   async removeFromRole(permissionId: number, roleId: number): Promise<boolean> {
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'DELETE FROM roles_permissions WHERE roles_id=$1 AND permissions_id=$2',
       [roleId, permissionId],
     );

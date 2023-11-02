@@ -15,7 +15,7 @@ export class RoleRepository
     // roleModel.roleGroups.push(roleGroup);
 
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'INSERT INTO rolegroups_roles VALUES($1, $2)',
       [roleGroupId, roleId],
     );
@@ -30,7 +30,7 @@ export class RoleRepository
     roleGroupId: number,
   ): Promise<boolean> {
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'DELETE FROM rolegroups_roles WHERE rolegroups_id=$1 AND roles_id=$2',
       [roleGroupId, roleId],
     );

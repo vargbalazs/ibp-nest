@@ -14,7 +14,7 @@ export class RoleGroupRepository
       where: { userId: userId },
     });
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'INSERT INTO users_rolegroups VALUES($1, $2)',
       [user.id, roleGroupId],
     );
@@ -27,7 +27,7 @@ export class RoleGroupRepository
       where: { userId: userId },
     });
     // using objects is too slow, that's why the raw query
-    this.dataSource.manager.query(
+    await this.dataSource.manager.query(
       'DELETE FROM users_rolegroups WHERE users_id=$1 AND rolegroups_id=$2',
       [user.id, roleGroupId],
     );
