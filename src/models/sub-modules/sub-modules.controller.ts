@@ -60,7 +60,7 @@ export class SubModuleController {
   }
 
   @Delete(':subModuleId')
-  async delete(@Param('subModuleId') subModuleId: number): Promise<boolean> {
+  async delete(@Param('subModuleId') subModuleId: number): Promise<number> {
     return this.subModuleService.deleteEntity(subModuleId);
   }
 }

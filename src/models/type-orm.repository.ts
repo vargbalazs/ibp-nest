@@ -59,9 +59,9 @@ export abstract class TypeOrmRepository<
     return this.save(oldEntity);
   }
 
-  async deleteEntity(id: number): Promise<boolean> {
-    const result = await this.delete(id);
-    return result.affected > 0;
+  async deleteEntity(id: number): Promise<number> {
+    await this.delete(id);
+    return id;
   }
 
   async updatePartial(

@@ -81,7 +81,7 @@ export class RoleController {
   }
 
   @Delete(':roleId')
-  async delete(@Param('roleId') roleId: number): Promise<boolean> {
+  async delete(@Param('roleId') roleId: number): Promise<number> {
     return this.roleService.deleteEntity(roleId);
   }
 }

@@ -33,7 +33,7 @@ export abstract class BaseService<T, T2, T3> {
     return this.repository.updateEntity(id, updateDto);
   }
 
-  async deleteEntity(id: number): Promise<boolean> {
+  async deleteEntity(id: number): Promise<number> {
     return this.repository.deleteEntity(id);
   }
 

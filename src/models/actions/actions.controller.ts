@@ -47,7 +47,7 @@ export class ActionController {
   }
 
   @Delete(':actionId')
-  async delete(@Param('actionId') actionId: number): Promise<boolean> {
+  async delete(@Param('actionId') actionId: number): Promise<number> {
     return this.actionService.deleteEntity(actionId);
   }
 }

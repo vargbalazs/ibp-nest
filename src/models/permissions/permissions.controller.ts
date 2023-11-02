@@ -85,7 +85,7 @@ export class PermissionController {
   }
 
   @Delete(':permissionId')
-  async delete(@Param('permissionId') permissionId: number): Promise<boolean> {
+  async delete(@Param('permissionId') permissionId: number): Promise<number> {
     return this.permissionService.deleteEntity(permissionId);
   }
 }

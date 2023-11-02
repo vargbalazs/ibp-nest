@@ -15,7 +15,7 @@ export interface BaseRepository<T, T2, T3> {
   ): Promise<T | undefined>;
   createEntity(createDto: T2): Promise<T>;
   updateEntity(id: number, updateDto: T3): Promise<T | undefined>;
-  deleteEntity(id: number): Promise<boolean>;
+  deleteEntity(id: number): Promise<number>;
   updatePartial(
     idColumn: string,
     idValue: number | string,

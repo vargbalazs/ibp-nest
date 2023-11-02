@@ -82,7 +82,7 @@ export class RoleGroupController {
   }
 
   @Delete(':roleGroupId')
-  async delete(@Param('roleGroupId') roleGroupId: number): Promise<boolean> {
+  async delete(@Param('roleGroupId') roleGroupId: number): Promise<number> {
     return this.roleGroupService.deleteEntity(roleGroupId);
   }
 }

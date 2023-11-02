@@ -74,7 +74,7 @@ export class OperationController {
   }
 
   @Delete(':operationId')
-  async delete(@Param('operationId') operationId: number): Promise<boolean> {
+  async delete(@Param('operationId') operationId: number): Promise<number> {
     return this.operationService.deleteEntity(operationId);
   }
 }

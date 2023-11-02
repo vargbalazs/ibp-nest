@@ -62,7 +62,7 @@ export class ModuleController {
   }
 
   @Delete(':moduleId')
-  async delete(@Param('moduleId') moduleId: number): Promise<boolean> {
+  async delete(@Param('moduleId') moduleId: number): Promise<number> {
     return this.moduleService.deleteEntity(moduleId);
   }
 }
