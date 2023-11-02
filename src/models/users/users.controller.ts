@@ -55,7 +55,7 @@ export class UserController {
   }
 
   @Public()
-  @Post()
+  @Post('signup')
   async create(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
     return new UserEntity(await this.userService.createEntity(createUserDto));
   }
