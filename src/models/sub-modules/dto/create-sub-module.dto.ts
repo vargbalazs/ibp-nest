@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
-import { BaseEntityDto } from 'src/models/base/base-entity.dto';
+import { UpdateModuleDto } from 'src/models/modules/dto/update-module.dto';
 
 export class CreateSubModuleDto {
   @IsNotEmpty()
@@ -9,6 +9,6 @@ export class CreateSubModuleDto {
 
   @IsNotEmpty()
   @ValidateNested()
-  @Type(() => BaseEntityDto)
-  module: BaseEntityDto;
+  @Type(() => UpdateModuleDto)
+  module: UpdateModuleDto;
 }
