@@ -35,4 +35,8 @@ export class PermissionRepository
       loadEagerRelations: false,
     });
   }
+
+  async findPermissionsWithDetails(): Promise<PermissionModel[]> {
+    return await this.find({ relations: { operation: { subModule: true } } });
+  }
 }

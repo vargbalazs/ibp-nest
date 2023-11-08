@@ -31,4 +31,8 @@ export class PermissionService extends BaseService<
       permissionId,
     );
   }
+
+  async getPermissionsWithDetails(): Promise<PermissionModel[]> {
+    return await this.permissionRepository.findPermissionsWithDetails();
+  }
 }

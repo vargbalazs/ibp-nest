@@ -1,5 +1,5 @@
-import { OperationsModule } from 'src/models/operations/operations.module';
 import { Permission } from '../interfaces/permission.interface';
+import { OperationModel } from 'src/models/operations/entities/operation.entity';
 
 export class PermissionEntity implements Permission {
   constructor(partial: Partial<PermissionEntity>) {
@@ -8,5 +8,5 @@ export class PermissionEntity implements Permission {
 
   id: number;
   name: string;
-  operation: OperationsModule;
+  operation: OperationModel;
 }
