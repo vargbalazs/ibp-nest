@@ -1,13 +1,13 @@
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
-import { UpdateModuleDto } from 'src/models/modules/dto/update-module.dto';
+import { ModuleNoSubModulesDto } from 'src/models/modules/dto/module-no-submodules.dto';
 import { UpdateSubModuleDto } from 'src/models/sub-modules/dto/update-sub-module.dto';
 
 export class CreateOperationDto {
   @IsNotEmpty()
   @ValidateNested()
-  @Type(() => UpdateModuleDto)
-  module: UpdateModuleDto;
+  @Type(() => ModuleNoSubModulesDto)
+  module: ModuleNoSubModulesDto;
 
   @IsNotEmpty()
   @IsString()

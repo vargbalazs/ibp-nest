@@ -1,8 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
 import { UpdateActionDto } from 'src/models/actions/dto/update-action.dto';
-import { ModuleForPermissionDto } from 'src/models/modules/dto/module-for-permission.dto';
-import { UpdateModuleDto } from 'src/models/modules/dto/update-module.dto';
+import { ModuleNoSubModulesDto } from 'src/models/modules/dto/module-no-submodules.dto';
 import { OperationForPermissionDto } from 'src/models/operations/dto/operation-for-permission.dto';
 import { UpdateSubModuleDto } from 'src/models/sub-modules/dto/update-sub-module.dto';
 
@@ -23,8 +22,8 @@ export class CreatePermissionDto {
 
   @IsNotEmpty()
   @ValidateNested()
-  @Type(() => ModuleForPermissionDto)
-  module: ModuleForPermissionDto;
+  @Type(() => ModuleNoSubModulesDto)
+  module: ModuleNoSubModulesDto;
 
   @IsNotEmpty()
   @ValidateNested()
