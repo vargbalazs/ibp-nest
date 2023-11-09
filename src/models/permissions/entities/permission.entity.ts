@@ -4,7 +4,6 @@ import {
   JoinColumn,
   ManyToMany,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Permission } from '../interfaces/permission.interface';
@@ -12,7 +11,7 @@ import { OperationModel } from 'src/models/operations/entities/operation.entity'
 import { RoleModel } from 'src/models/roles/entities/role.entity';
 import { ActionModel } from 'src/models/actions/entities/action.entity';
 
-@Entity({ name: 'permissions', synchronize: false })
+@Entity({ name: 'permissions', synchronize: true })
 export class PermissionModel implements Permission {
   @PrimaryGeneratedColumn()
   id: number;
@@ -28,7 +27,7 @@ export class PermissionModel implements Permission {
   @ManyToMany(() => RoleModel, (role) => role.permissions)
   roles: RoleModel[];
 
-  @OneToOne(() => ActionModel)
+  @ManyToOne(() => ActionModel, { nullable: false })
   @JoinColumn()
   action: ActionModel;
 }
