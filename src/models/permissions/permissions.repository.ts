@@ -37,6 +37,8 @@ export class PermissionRepository
   }
 
   async findPermissionsWithDetails(): Promise<PermissionModel[]> {
-    return await this.find({ relations: { operation: { subModule: true } } });
+    return await this.find({
+      relations: { operation: { subModule: true }, action: true },
+    });
   }
 }
