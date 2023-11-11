@@ -11,7 +11,7 @@ import { OperationModel } from 'src/models/operations/entities/operation.entity'
 import { RoleModel } from 'src/models/roles/entities/role.entity';
 import { ActionModel } from 'src/models/actions/entities/action.entity';
 
-@Entity({ name: 'permissions', synchronize: true })
+@Entity({ name: 'permissions', synchronize: false })
 export class PermissionModel implements Permission {
   @PrimaryGeneratedColumn()
   id: number;

@@ -53,4 +53,10 @@ export class RoleRepository
       loadEagerRelations: false,
     });
   }
+
+  async findRolesWithPermissions(): Promise<RoleModel[]> {
+    return await this.find({
+      relations: { permissions: true },
+    });
+  }
 }

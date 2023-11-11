@@ -12,6 +12,8 @@ export interface RoleModelRepository
   findRoleWithRoleGroups(roleId: number): Promise<RoleModel>;
 
   findRoleWithPermissions(roleId: number): Promise<RoleModel>;
+
+  findRolesWithPermissions(): Promise<RoleModel[]>;
 }
 
 export const RoleModelRepository = Symbol('RoleModelRepository');

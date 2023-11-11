@@ -40,4 +40,8 @@ export class RoleService extends BaseService<
   async getRoleWithPermissions(roleId: number): Promise<RoleModel> {
     return await this.roleRepository.findRoleWithPermissions(roleId);
   }
+
+  async getRolesWithPermissions(): Promise<RoleModel[]> {
+    return await this.roleRepository.findRolesWithPermissions();
+  }
 }
