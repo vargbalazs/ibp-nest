@@ -75,6 +75,6 @@ export class UserController {
   async delete(@Query('userId') userId: string): Promise<string> {
     const user = await this.userService.findByColumn('userId', userId);
     await this.userService.deleteEntity(user.id);
-    return user.userId;
+    return JSON.stringify(user.userId);
   }
 }
