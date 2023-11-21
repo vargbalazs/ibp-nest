@@ -5,7 +5,7 @@ import { UpdateUserDto } from '../dto/update-user.dto';
 
 export interface UserModelRepository
   extends BaseRepository<UserModel, CreateUserDto, UpdateUserDto> {
-  findUserWithRoleGroups(userId: string): Promise<UserModel>;
+  findUserWithRoleGroupsAndPermissions(userId: string): Promise<UserModel>;
 }
 
 export const UserModelRepository = Symbol('UserModelRepository');

@@ -34,11 +34,13 @@ export class UserController {
     return !!user;
   }
 
-  @Get('user-with-rolegroups/:userId')
+  @Get('user-with-rolegroups-and-permissions/:userId')
   async getUserWithRoleGroups(
     @Param('userId') userId: string,
   ): Promise<UserEntity> {
-    return new UserEntity(await this.userService.getUserWithRoleGroups(userId));
+    return new UserEntity(
+      await this.userService.getUserWithRoleGroupsAndPermissions(userId),
+    );
   }
 
   @Get()

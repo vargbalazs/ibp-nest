@@ -26,7 +26,7 @@ export class UserService extends BaseService<
     return this.userRepository.findByColumn('userEmail', userEmail);
   }
 
-  async getUserWithRoleGroups(userId: string): Promise<UserModel> {
-    return await this.userRepository.findUserWithRoleGroups(userId);
+  async getUserWithRoleGroupsAndPermissions(userId: string): Promise<UserModel> {
+    return await this.userRepository.findUserWithRoleGroupsAndPermissions(userId);
   }
 }
