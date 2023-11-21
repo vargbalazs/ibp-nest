@@ -56,7 +56,8 @@ export class RoleRepository
 
   async findRolesWithPermissions(): Promise<RoleModel[]> {
     return await this.find({
-      relations: { permissions: true },
+      relations: { permissions: true, roleGroups: true },
+      loadEagerRelations: false,
     });
   }
 }
