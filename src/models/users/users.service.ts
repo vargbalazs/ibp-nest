@@ -4,6 +4,7 @@ import { UserModelRepository } from './interfaces/repository.interface';
 import { BaseService } from '../base-service.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ChangePwdDto } from './dto/change-pwd.dto';
 
 @Injectable()
 export class UserService extends BaseService<
@@ -26,7 +27,15 @@ export class UserService extends BaseService<
     return this.userRepository.findByColumn('userEmail', userEmail);
   }
 
-  async getUserWithRoleGroupsAndPermissions(userId: string): Promise<UserModel> {
-    return await this.userRepository.findUserWithRoleGroupsAndPermissions(userId);
+  async getUserWithRoleGroupsAndPermissions(
+    userId: string,
+  ): Promise<UserModel> {
+    return await this.userRepository.findUserWithRoleGroupsAndPermissions(
+      userId,
+    );
+  }
+
+  async changeUserPwd(changePwdDto: ChangePwdDto): Promise<string> {
+    return await this.userRepository.changePwd(changePwdDto);
   }
 }

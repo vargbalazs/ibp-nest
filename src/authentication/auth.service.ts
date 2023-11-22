@@ -45,6 +45,7 @@ export class AuthService {
     return {
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
+      userId: user.userId,
     };
   }
 
@@ -119,6 +120,7 @@ export class AuthService {
       userEmail,
       {
         password: hash,
+        firstLogin: true,
       },
     );
 

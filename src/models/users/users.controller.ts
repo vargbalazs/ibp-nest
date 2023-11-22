@@ -13,6 +13,7 @@ import { UserEntity } from './serializers/user.serializer';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Public } from 'src/common/decorators/public.decorator';
+import { ChangePwdDto } from './dto/change-pwd.dto';
 
 @Controller('users')
 export class UserController {
@@ -60,6 +61,12 @@ export class UserController {
   @Post('signup')
   async create(@Body() createUserDto: CreateUserDto): Promise<UserEntity> {
     return new UserEntity(await this.userService.createEntity(createUserDto));
+  }
+
+  @Post('changepwd')
+  async changePwd(@Body() changePwdDto: ChangePwdDto): Promise<string> {
+    const userId = await this.userService.changeUserPwd(changePwdDto);
+    return JSON.stringify(userId);
   }
 
   @Put(':userId')

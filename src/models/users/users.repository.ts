@@ -6,6 +6,8 @@ import * as bcryptjs from 'bcryptjs';
 import { TypeOrmRepository } from '../type-orm.repository';
 import { MailService } from 'src/mail/mail.service';
 import { Inject } from '@nestjs/common';
+import { ChangePwdDto } from './dto/change-pwd.dto';
+import { PasswordsNotMatchException } from 'src/common/exceptions/passwords-not-match.exception';
 
 export class UserRepository
   extends TypeOrmRepository<UserModel>
@@ -39,5 +41,21 @@ export class UserRepository
       where: { userId: userId },
       relations: { roleGroups: { roles: { permissions: true } } },
     });
+  }
+
+  async changePwd(changePwdDto: ChangePwdDto): Promise<string> {
+    if (changePwdDto.password !== changePwdDto.confirmPassword)
+      throw new PasswordsNotMatchException();
+
+    const user = await this.findByColumn('userId', changePwdDto.userId);
+
+    const hash = await bcryptjs.hash(changePwdDto.password, 10);
+
+    await this.updatePartial('userId', changePwdDto.userId, {
+      password: hash,
+      firstLogin: false,
+    });
+
+    return user.userId;
   }
 }
