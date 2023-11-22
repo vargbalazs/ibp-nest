@@ -14,6 +14,8 @@ export interface RoleGroupModelRepository
   removeFromUser(roleGroupId: number, userId: string): Promise<boolean>;
 
   findRoleGroupWithUsers(roleGroupId: number): Promise<RoleGroupModel>;
+
+  findRoleGroupsWithPermissions(): Promise<RoleGroupModel[]>;
 }
 
 export const RoleGroupModelRepository = Symbol('RoleGroupModelRepository');

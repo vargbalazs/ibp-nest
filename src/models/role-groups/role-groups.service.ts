@@ -29,4 +29,8 @@ export class RoleGroupService extends BaseService<
   async getRoleGroupWithUsers(roleGroupId: number): Promise<RoleGroupModel> {
     return await this.roleGroupRepository.findRoleGroupWithUsers(roleGroupId);
   }
+
+  async getRoleGroupsWithPermissions(): Promise<RoleGroupModel[]> {
+    return await this.roleGroupRepository.findRoleGroupsWithPermissions();
+  }
 }
