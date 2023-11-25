@@ -10,6 +10,6 @@ export class ModuleNoSubModulesDto {
   @IsString()
   name: string;
 
-  // @IsNotEmpty()
-  // subModules: UpdateSubModuleDto[];
+  @IsNotEmpty()
+  subModules: UpdateSubModuleDto[];
 }
