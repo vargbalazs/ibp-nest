@@ -13,6 +13,8 @@ import { CreateRoleGroupDto } from './dto/create-role-group.dto';
 import { UpdateRoleGroupDto } from './dto/update-role-group.dto';
 import { AssignToUserDto } from './dto/assign-to-user.dto';
 import { RemoveFromUserDto } from './dto/remove-from-user.dto';
+import { AssignToRouteDto } from './dto/assign-to-route.dto';
+import { RemoveFromRouteDto } from './dto/remove-from-route.dto';
 
 @Controller('role-groups')
 export class RoleGroupController {
@@ -75,6 +77,26 @@ export class RoleGroupController {
     return await this.roleGroupService.removeFromUser(
       removeFromUserDto.roleGroupId,
       removeFromUserDto.userId,
+    );
+  }
+
+  @Post('assign-to-route')
+  async assignToRoute(
+    @Body() assignToRouteDto: AssignToRouteDto,
+  ): Promise<boolean> {
+    return await this.roleGroupService.assignToRoute(
+      assignToRouteDto.roleGroupId,
+      assignToRouteDto.routeId,
+    );
+  }
+
+  @Post('remove-from-route')
+  async removeFromRoute(
+    @Body() removeFromRouteDto: RemoveFromRouteDto,
+  ): Promise<boolean> {
+    return await this.roleGroupService.removeFromRoute(
+      removeFromRouteDto.roleGroupId,
+      removeFromRouteDto.routeId,
     );
   }
 

@@ -16,6 +16,10 @@ export interface RoleGroupModelRepository
   findRoleGroupWithUsers(roleGroupId: number): Promise<RoleGroupModel>;
 
   findRoleGroupsWithPermissions(): Promise<RoleGroupModel[]>;
+
+  assignToRoute(roleGroupId: number, routeId: number): Promise<boolean>;
+
+  removeFromRoute(roleGroupId: number, routeId: number): Promise<boolean>;
 }
 
 export const RoleGroupModelRepository = Symbol('RoleGroupModelRepository');

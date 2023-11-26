@@ -33,4 +33,15 @@ export class RoleGroupService extends BaseService<
   async getRoleGroupsWithPermissions(): Promise<RoleGroupModel[]> {
     return await this.roleGroupRepository.findRoleGroupsWithPermissions();
   }
+
+  async assignToRoute(roleGroupId: number, routeId: number): Promise<boolean> {
+    return await this.roleGroupRepository.assignToRoute(roleGroupId, routeId);
+  }
+
+  async removeFromRoute(
+    roleGroupId: number,
+    routeId: number,
+  ): Promise<boolean> {
+    return await this.roleGroupRepository.removeFromRoute(roleGroupId, routeId);
+  }
 }
