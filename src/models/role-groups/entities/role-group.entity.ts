@@ -8,6 +8,7 @@ import {
 import { RoleGroup } from '../interfaces/role-group.interface';
 import { RoleModel } from 'src/models/roles/entities/role.entity';
 import { UserModel } from 'src/models/users/entities/user.entity';
+import { RouteModel } from 'src/models/routes/entities/route.entity';
 
 @Entity({ name: 'rolegroups', synchronize: false })
 export class RoleGroupModel implements RoleGroup {
@@ -23,4 +24,7 @@ export class RoleGroupModel implements RoleGroup {
 
   @ManyToMany(() => UserModel, (user) => user.roleGroups)
   users: UserModel[];
+
+  @ManyToMany(() => RouteModel, (route) => route.roleGroups)
+  routes: RouteModel[];
 }
