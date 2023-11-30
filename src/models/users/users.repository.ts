@@ -39,7 +39,8 @@ export class UserRepository
   ): Promise<UserModel> {
     return await this.findOne({
       where: { userId: userId },
-      relations: { roleGroups: { roles: { permissions: true } } },
+      relations: { roleGroups: { roles: { permissions: true }, routes: true } },
+      loadEagerRelations: false,
     });
   }
 
