@@ -9,7 +9,7 @@ import {
 import { Permission } from '../interfaces/permission.interface';
 import { OperationModel } from 'src/models/operations/entities/operation.entity';
 import { RoleModel } from 'src/models/roles/entities/role.entity';
-import { ActionModel } from 'src/models/actions/entities/action.entity';
+import { ActionModel } from 'src/models/admin/actions/entities/action.entity';
 
 @Entity({ name: 'permissions', synchronize: false })
 export class PermissionModel implements Permission {
