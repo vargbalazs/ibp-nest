@@ -1,7 +1,7 @@
 import { RoleGroupModel } from './entities/role-group.entity';
 import { RoleGroupModelRepository } from './interfaces/repository.interface';
 import { TypeOrmRepository } from '../../type-orm.repository';
-import { UserModel } from '../../users/entities/user.entity';
+import { UserModel } from '../users/entities/user.entity';
 import { RouteModel } from '../routes/entities/route.entity';
 
 export class RoleGroupRepository

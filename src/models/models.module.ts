@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { RoleGroupsModule } from './admin/role-groups/role-groups.module';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './admin/users/users.module';
 import { ActionsModule } from './admin/actions/actions.module';
 import { ModulesModule } from './admin/modules/modules.module';
 import { OperationsModule } from './admin/operations/operations.module';

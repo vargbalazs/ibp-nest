@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UserModelRepository } from './interfaces/repository.interface';
 import generator from 'generate-password-ts';
 import * as bcryptjs from 'bcryptjs';
-import { TypeOrmRepository } from '../type-orm.repository';
+import { TypeOrmRepository } from '../../type-orm.repository';
 import { MailService } from 'src/mail/mail.service';
 import { Inject } from '@nestjs/common';
 import { ChangePwdDto } from './dto/change-pwd.dto';

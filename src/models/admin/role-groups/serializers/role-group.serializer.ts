@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { RoleGroup } from '../interfaces/role-group.interface';
-import { UserEntity } from 'src/models/users/serializers/user.serializer';
+import { UserEntity } from 'src/models/admin/users/serializers/user.serializer';
 
 export class RoleGroupEntity implements RoleGroup {
   constructor(partial: Partial<RoleGroupEntity>) {
