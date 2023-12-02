@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { SubModule } from '../interfaces/sub-module.interface';
 import { ModuleModel } from 'src/models/admin/modules/entities/module.entity';
-import { OperationModel } from 'src/models/operations/entities/operation.entity';
+import { OperationModel } from 'src/models/admin/operations/entities/operation.entity';
 
 @Entity({ name: 'submodules', synchronize: false })
 export class SubModuleModel implements SubModule {

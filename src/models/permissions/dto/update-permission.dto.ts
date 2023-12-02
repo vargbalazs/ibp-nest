@@ -7,7 +7,7 @@ import {
 } from 'class-validator';
 import { UpdateActionDto } from 'src/models/admin/actions/dto/update-action.dto';
 import { SimpleModuleDto } from 'src/models/admin/modules/dto/simple-module.dto';
-import { OperationForPermissionDto } from 'src/models/operations/dto/operation-for-permission.dto';
+import { OperationForPermissionDto } from 'src/models/admin/operations/dto/operation-for-permission.dto';
 import { UpdateSubModuleDto } from 'src/models/admin/sub-modules/dto/update-sub-module.dto';
 
 export class UpdatePermissionDto {
