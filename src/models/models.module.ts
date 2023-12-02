@@ -5,7 +5,7 @@ import { ActionsModule } from './admin/actions/actions.module';
 import { ModulesModule } from './admin/modules/modules.module';
 import { OperationsModule } from './operations/operations.module';
 import { RolesModule } from './roles/roles.module';
-import { SubModulesModule } from './sub-modules/sub-modules.module';
+import { SubModulesModule } from './admin/sub-modules/sub-modules.module';
 import { PermissionsModule } from './permissions/permissions.module';
 import { RoutesModule } from './routes/routes.module';
 import { BusModule } from './bu/bus.module';
