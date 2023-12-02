@@ -1,4 +1,4 @@
-import { ModuleModel } from 'src/models/modules/entities/module.entity';
+import { ModuleModel } from 'src/models/admin/modules/entities/module.entity';
 import { SubModule } from '../interfaces/sub-module.interface';
 
 export class SubModuleEntity implements SubModule {

@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
-import { UpdateModuleDto } from 'src/models/modules/dto/update-module.dto';
+import { UpdateModuleDto } from 'src/models/admin/modules/dto/update-module.dto';
 
 export class CreateSubModuleDto {
   @IsNotEmpty()

@@ -5,7 +5,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { SimpleModuleDto } from 'src/models/modules/dto/simple-module.dto';
+import { SimpleModuleDto } from 'src/models/admin/modules/dto/simple-module.dto';
 import { UpdateSubModuleDto } from 'src/models/sub-modules/dto/update-sub-module.dto';
 
 export class UpdateOperationDto {
