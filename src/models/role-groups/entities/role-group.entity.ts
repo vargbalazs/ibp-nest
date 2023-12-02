@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { RoleGroup } from '../interfaces/role-group.interface';
-import { RoleModel } from 'src/models/roles/entities/role.entity';
+import { RoleModel } from 'src/models/admin/roles/entities/role.entity';
 import { UserModel } from 'src/models/users/entities/user.entity';
 import { RouteModel } from 'src/models/routes/entities/route.entity';
 
