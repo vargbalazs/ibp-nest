@@ -7,7 +7,7 @@ import { OperationsModule } from './admin/operations/operations.module';
 import { RolesModule } from './admin/roles/roles.module';
 import { SubModulesModule } from './admin/sub-modules/sub-modules.module';
 import { PermissionsModule } from './admin/permissions/permissions.module';
-import { RoutesModule } from './routes/routes.module';
+import { RoutesModule } from './admin/routes/routes.module';
 import { BusModule } from './bu/bus.module';
 
 @Module({
