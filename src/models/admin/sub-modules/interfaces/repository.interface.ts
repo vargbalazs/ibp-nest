@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/models/base-repository.interface';
+import { BaseRepository } from 'src/models/base/base-repository.interface';
 import { SubModuleModel } from '../entities/sub-module.entity';
 import { CreateSubModuleDto } from '../dto/create-sub-module.dto';
 import { UpdateSubModuleDto } from '../dto/update-sub-module.dto';

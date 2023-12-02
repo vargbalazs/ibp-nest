@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/models/base-repository.interface';
+import { BaseRepository } from 'src/models/base/base-repository.interface';
 import { OperationModel } from '../entities/operation.entity';
 import { CreateOperationDto } from '../dto/create-operation.dto';
 import { UpdateOperationDto } from '../dto/update-operation.dto';

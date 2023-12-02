@@ -1,6 +1,6 @@
 import { RouteModel } from './entities/route.entity';
 import { RouteModelRepository } from './interfaces/repository.interface';
-import { TypeOrmRepository } from '../../type-orm.repository';
+import { TypeOrmRepository } from '../../base/type-orm.repository';
 import { FindOptionsWhere } from 'typeorm';
 
 export class RouteRepository

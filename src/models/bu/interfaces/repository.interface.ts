@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/models/base-repository.interface';
+import { BaseRepository } from 'src/models/base/base-repository.interface';
 import { BuModel } from '../entities/bu.entitiy';
 import { CreateBuDto } from '../dto/create-bu.dto';
 import { UpdateBuDto } from '../dto/update-bu.dto';

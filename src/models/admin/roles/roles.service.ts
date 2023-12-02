@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { RoleModel } from './entities/role.entity';
 import { RoleModelRepository } from './interfaces/repository.interface';
-import { BaseService } from '../../base-service.service';
+import { BaseService } from '../../base/base-service.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { RoleGroupModel } from '../role-groups/entities/role-group.entity';

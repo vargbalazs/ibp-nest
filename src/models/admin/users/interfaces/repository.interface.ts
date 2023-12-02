@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/models/base-repository.interface';
+import { BaseRepository } from 'src/models/base/base-repository.interface';
 import { UserModel } from '../entities/user.entity';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';

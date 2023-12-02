@@ -1,4 +1,4 @@
-import { BaseRepository } from 'src/models/base-repository.interface';
+import { BaseRepository } from 'src/models/base/base-repository.interface';
 import { RoleGroupModel } from '../entities/role-group.entity';
 import { CreateRoleGroupDto } from '../dto/create-role-group.dto';
 import { UpdateRoleGroupDto } from '../dto/update-role-group.dto';
