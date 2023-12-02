@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Route } from '../interfaces/route.interface';
-import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
+import { RoleGroupModel } from 'src/models/admin/role-groups/entities/role-group.entity';
 
 @Entity({ name: 'routes', synchronize: false })
 export class RouteModel implements Route {

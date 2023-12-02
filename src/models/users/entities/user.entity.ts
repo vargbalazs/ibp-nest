@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../interfaces/user.interface';
-import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
+import { RoleGroupModel } from 'src/models/admin/role-groups/entities/role-group.entity';
 
 @Entity({ name: 'users', synchronize: false })
 export class UserModel implements User {

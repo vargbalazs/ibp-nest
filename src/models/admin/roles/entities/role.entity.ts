@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Role } from '../interfaces/role.interface';
-import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
+import { RoleGroupModel } from 'src/models/admin/role-groups/entities/role-group.entity';
 import { PermissionModel } from 'src/models/admin/permissions/entities/permission.entity';
 
 @Entity({ name: 'roles', synchronize: false })

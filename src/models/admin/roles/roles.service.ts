@@ -4,7 +4,7 @@ import { RoleModelRepository } from './interfaces/repository.interface';
 import { BaseService } from '../../base-service.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { RoleGroupModel } from '../../role-groups/entities/role-group.entity';
+import { RoleGroupModel } from '../role-groups/entities/role-group.entity';
 
 @Injectable()
 export class RoleService extends BaseService<
