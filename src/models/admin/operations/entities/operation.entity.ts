@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Operation } from '../interfaces/operation.interface';
-import { PermissionModel } from 'src/models/permissions/entities/permission.entity';
+import { PermissionModel } from 'src/models/admin/permissions/entities/permission.entity';
 import { SubModuleModel } from 'src/models/admin/sub-modules/entities/sub-module.entity';
 
 @Entity({ name: 'operations', synchronize: false })

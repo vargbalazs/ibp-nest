@@ -7,7 +7,7 @@ import {
 } from 'typeorm';
 import { Role } from '../interfaces/role.interface';
 import { RoleGroupModel } from 'src/models/role-groups/entities/role-group.entity';
-import { PermissionModel } from 'src/models/permissions/entities/permission.entity';
+import { PermissionModel } from 'src/models/admin/permissions/entities/permission.entity';
 
 @Entity({ name: 'roles', synchronize: false })
 export class RoleModel implements Role {

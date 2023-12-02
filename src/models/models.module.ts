@@ -6,7 +6,7 @@ import { ModulesModule } from './admin/modules/modules.module';
 import { OperationsModule } from './admin/operations/operations.module';
 import { RolesModule } from './roles/roles.module';
 import { SubModulesModule } from './admin/sub-modules/sub-modules.module';
-import { PermissionsModule } from './permissions/permissions.module';
+import { PermissionsModule } from './admin/permissions/permissions.module';
 import { RoutesModule } from './routes/routes.module';
 import { BusModule } from './bu/bus.module';
 
