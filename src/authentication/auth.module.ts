@@ -12,6 +12,7 @@ import { AccessTokenGuard } from './guards/access-token.guard';
 import { RefreshTokenStrategy } from './strategies/refresh-token.strategy';
 import { CookieConfigService } from 'src/config/cookie/config.service';
 import { CookieConfigModule } from 'src/config/cookie/config.module';
+import { PermissionsGuard } from './guards/permissions.guard';
 
 @Module({
   imports: [
@@ -37,6 +38,10 @@ import { CookieConfigModule } from 'src/config/cookie/config.module';
     {
       provide: APP_GUARD,
       useClass: AccessTokenGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: PermissionsGuard,
     },
     AccessTokenStrategy,
     RefreshTokenStrategy,

@@ -11,12 +11,15 @@ import { BuService } from './bus.service';
 import { BuEntity } from './serializers/bu.serializer';
 import { CreateBuDto } from './dto/create-bu.dto';
 import { UpdateBuDto } from './dto/update-bu.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import Permissions from 'src/authentication/permissions/permissions.type';
 
 @Controller('bus')
 export class BuController {
   constructor(private readonly buService: BuService) {}
 
   @Get()
+  @RequirePermissions(Permissions.VIEW_BU)
   async getBus(): Promise<BuEntity[]> {
     const bus = await this.buService.findAll();
     return bus.map((bu) => new BuEntity(bu));
