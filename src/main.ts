@@ -41,6 +41,7 @@ async function bootstrap() {
       'Accept',
       'X-Requested-With',
       'Access-Control-Request-Method',
+      'Ibp-Permission',
     ],
     exposedHeaders: [
       'Origin',
