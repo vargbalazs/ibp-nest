@@ -11,8 +11,11 @@ import { ActionService } from './actions.service';
 import { ActionEntity } from './serializers/action.serializer';
 import { CreateActionDto } from './dto/create-action.dto';
 import { UpdateActionDto } from './dto/update-action.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('actions')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class ActionController {
   constructor(private readonly actionService: ActionService) {}
 

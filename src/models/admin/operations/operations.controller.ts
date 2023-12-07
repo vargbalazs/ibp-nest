@@ -11,8 +11,11 @@ import { OperationService } from './operations.service';
 import { OperationEntity } from './serializers/operation.serializer';
 import { CreateOperationDto } from './dto/create-operation.dto';
 import { UpdateOperationDto } from './dto/update-operation.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('operations')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class OperationController {
   constructor(private readonly operationService: OperationService) {}
 

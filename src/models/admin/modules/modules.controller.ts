@@ -11,8 +11,11 @@ import { ModuleService } from './modules.service';
 import { ModuleEntity } from './serializers/module.serializer';
 import { CreateModuleDto } from './dto/create-module.dto';
 import { UpdateModuleDto } from './dto/update-module.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('modules')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class ModuleController {
   constructor(private readonly moduleService: ModuleService) {}
 

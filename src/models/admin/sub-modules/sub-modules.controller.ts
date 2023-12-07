@@ -11,8 +11,11 @@ import { SubModuleService } from './sub-modules.service';
 import { SubModuleEntity } from './serializers/sub-module.serializer';
 import { CreateSubModuleDto } from './dto/create-sub-module.dto';
 import { UpdateSubModuleDto } from './dto/update-sub-module.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('sub-modules')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class SubModuleController {
   constructor(private readonly subModuleService: SubModuleService) {}
 

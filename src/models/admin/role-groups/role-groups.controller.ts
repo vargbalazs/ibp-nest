@@ -15,8 +15,11 @@ import { AssignToUserDto } from './dto/assign-to-user.dto';
 import { RemoveFromUserDto } from './dto/remove-from-user.dto';
 import { AssignToRouteDto } from './dto/assign-to-route.dto';
 import { RemoveFromRouteDto } from './dto/remove-from-route.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('role-groups')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class RoleGroupController {
   constructor(private readonly roleGroupService: RoleGroupService) {}
 

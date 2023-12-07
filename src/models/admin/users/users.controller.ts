@@ -14,8 +14,11 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ChangePwdDto } from './dto/change-pwd.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('users')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

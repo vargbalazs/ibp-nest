@@ -13,8 +13,11 @@ import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { AssignToRoleDto } from './dto/assign-to-role.dto';
 import { RemoveFromRoleDto } from './dto/remove-from-role.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('permissions')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class PermissionController {
   constructor(private readonly permissionService: PermissionService) {}
 

@@ -11,8 +11,11 @@ import { RouteService } from './routes.service';
 import { RouteEntity } from './serializers/route.serializer';
 import { CreateRouteDto } from './dto/create-route.dto';
 import { UpdateRouteDto } from './dto/update-route.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('routes')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class RouteController {
   constructor(private readonly routeService: RouteService) {}
 

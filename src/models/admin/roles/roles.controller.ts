@@ -13,8 +13,11 @@ import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { AssignToRoleGroupDto } from './dto/assign-to-rolegroup.dto';
 import { RemoveFromRoleGroupDto } from './dto/remove-from-rolegroup.dto';
+import { RequirePermissions } from 'src/common/decorators/permissions.decorator';
+import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('roles')
+@RequirePermissions(AdminPermissions.ADMIN)
 export class RoleController {
   constructor(private readonly roleService: RoleService) {}
 
