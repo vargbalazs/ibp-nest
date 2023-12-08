@@ -18,7 +18,6 @@ import { RequirePermissions } from 'src/common/decorators/permissions.decorator'
 import AdminPermissions from 'src/authentication/permissions/admin-permissions.enum';
 
 @Controller('users')
-@RequirePermissions(AdminPermissions.ADMIN)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
@@ -48,12 +47,14 @@ export class UserController {
   }
 
   @Get()
+  @RequirePermissions(AdminPermissions.ADMIN)
   async getAllUsers(): Promise<UserEntity[]> {
     const users = await this.userService.findAll();
     return users.map((user) => new UserEntity(user));
   }
 
   @Get(':userId')
+  @RequirePermissions(AdminPermissions.ADMIN)
   async findByUserId(@Param('userId') userId: string): Promise<UserEntity> {
     return new UserEntity(
       await this.userService.findByColumn('userId', userId),
@@ -73,6 +74,7 @@ export class UserController {
   }
 
   @Put(':userId')
+  @RequirePermissions(AdminPermissions.ADMIN)
   async update(
     @Param('userId') userId: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -84,6 +86,7 @@ export class UserController {
   }
 
   @Delete()
+  @RequirePermissions(AdminPermissions.ADMIN)
   async delete(@Query('userId') userId: string): Promise<string> {
     const user = await this.userService.findByColumn('userId', userId);
     await this.userService.deleteEntity(user.id);
