@@ -3,7 +3,7 @@ import { Constraint } from '../interfaces/constraint.interface';
 import { UserModel } from '../../users/entities/user.entity';
 import { RoleModel } from '../../roles/entities/role.entity';
 
-@Entity({ name: 'constraints', synchronize: true })
+@Entity({ name: 'constraints', synchronize: false })
 export class ConstraintModel implements Constraint {
   @PrimaryGeneratedColumn()
   id: number;
