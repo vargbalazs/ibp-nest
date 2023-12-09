@@ -4,10 +4,12 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '../interfaces/user.interface';
 import { RoleGroupModel } from 'src/models/admin/role-groups/entities/role-group.entity';
+import { ConstraintModel } from '../../constraints/entities/constraint.entity';
 
 @Entity({ name: 'users', synchronize: false })
 export class UserModel implements User {
@@ -55,4 +57,7 @@ export class UserModel implements User {
   })
   @JoinTable({ name: 'users_rolegroups', synchronize: false })
   roleGroups: RoleGroupModel[];
+
+  @OneToMany(() => ConstraintModel, (constraint) => constraint.user)
+  constraints: ConstraintModel[];
 }
