@@ -41,7 +41,7 @@ export class UserRepository
       where: { userId: userId },
       relations: {
         roleGroups: { roles: { permissions: true }, routes: true },
-        constraints: true,
+        constraints: { role: true },
       },
       loadEagerRelations: false,
     });
