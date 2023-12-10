@@ -37,11 +37,15 @@ export class UserRepository
   async findUserWithRoleGroupsAndPermissions(
     userId: string,
   ): Promise<UserModel> {
-    return await this.findOne({
+    const [user] = await this.find({
       where: { userId: userId },
-      relations: { roleGroups: { roles: { permissions: true }, routes: true } },
+      relations: {
+        roleGroups: { roles: { permissions: true }, routes: true },
+        constraints: true,
+      },
       loadEagerRelations: false,
     });
+    return user;
   }
 
   async changePwd(changePwdDto: ChangePwdDto): Promise<string> {
