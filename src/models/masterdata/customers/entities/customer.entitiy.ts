@@ -1,6 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Customer } from '../interfaces/customer.interface';
 import { BuModel } from '../../bu/entities/bu.entitiy';
+import { ProjectModel } from '../../projects/entities/project.entitiy';
 
 @Entity({ name: 'customers', synchronize: false })
 export class CustomerModel implements Customer {
@@ -18,4 +25,7 @@ export class CustomerModel implements Customer {
     eager: true,
   })
   bu: BuModel;
+
+  @OneToMany(() => ProjectModel, (project) => project.customer)
+  projects: ProjectModel[];
 }
