@@ -8,5 +8,6 @@ export class CustomerEntity implements Customer {
 
   id: number;
   name: string;
+  code: string;
   bu: BuModel;
 }

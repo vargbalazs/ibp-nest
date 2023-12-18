@@ -8,6 +8,10 @@ export class CreateCustomerDto {
   name: string;
 
   @IsNotEmpty()
+  @IsString()
+  code: string;
+
+  @IsNotEmpty()
   @ValidateNested()
   @Type(() => UpdateBuDto)
   bu: UpdateBuDto;

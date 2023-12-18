@@ -10,6 +10,9 @@ export class CustomerModel implements Customer {
   @Column()
   name: string;
 
+  @Column()
+  code: string;
+
   @ManyToOne(() => BuModel, (bu) => bu.customers, {
     nullable: false,
     eager: true,
